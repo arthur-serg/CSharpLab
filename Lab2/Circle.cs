@@ -7,19 +7,8 @@ namespace Lab2
     class Circle : Figure
     {
         private readonly string name;
-        private double radius;
 
-        double Radius
-        {
-            get
-            {
-                return radius;
-            }
-            set
-            {
-                radius = value;
-            }
-        }
+        double Radius { get; set; }
         public override double GetArea()
         {
             return Math.PI * Math.Pow(Radius, 2);

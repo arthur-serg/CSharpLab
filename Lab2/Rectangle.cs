@@ -7,36 +7,15 @@ namespace Lab2
     class Rectangle : Figure
     {
         private readonly string name;
-        private double height;
-        private double width;
 
-        double Height
-        {
-            get
-            {
-                return height;
-            }
-            set
-            {
-                height = value;
-            }
-        }
-        double Width
-        {
-            get
-            {
-                return width;
-            }
-            set
-            {
-                width = value;
-            }
-        }
+
+        double Height { get; set; }
+        double Width { get; set; }
 
         public Rectangle(double height, double width)
         {
-            this.height = height;
-            this.width = width;
+            Height = height;
+            Width = width;
         }
         public override double GetArea()
         {
