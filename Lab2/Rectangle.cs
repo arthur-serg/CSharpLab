@@ -38,6 +38,12 @@ namespace Lab2
             Height = height;
             Width = width;
         }
+
+        public Rectangle()
+        {
+            Height = 0;
+            Width = 0;
+        }
         public override double GetArea() => Height * Width;
 
         public override string GetName() => name;

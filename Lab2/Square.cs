@@ -9,8 +9,8 @@ namespace Lab2
         private readonly string name;
         private double length;
 
-        //TO DO: дичь в конструкторе. исправить.
-        public Square(double length) : base(height: length, width: length)
+        
+        public Square(double length) 
         {
             this.length = length;
         }
