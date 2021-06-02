@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab2
 {
-    class Square : Rectangle
+    internal class Square : Rectangle
     {
         private readonly string name;
         private double length;

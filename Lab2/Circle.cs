@@ -4,7 +4,7 @@ using System.Text;
 
 namespace Lab2
 {
-    class Circle : Figure
+    internal class Circle : Figure
     {
         private readonly string name;
 
@@ -17,6 +17,7 @@ namespace Lab2
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
+                Radius = value;
             }
         }
         public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
