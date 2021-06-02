@@ -6,7 +6,7 @@ namespace Lab2
 {
     internal class Rectangle : Figure
     {
-        private readonly string name;
+        string Name { get; set; } = "Rectangle";
 
         double Height
         {
@@ -38,15 +38,9 @@ namespace Lab2
             Height = height;
             Width = width;
         }
-
-        public Rectangle()
-        {
-            Height = 0;
-            Width = 0;
-        }
         public override double GetArea() => Height * Width;
 
-        public override string GetName() => name;
+        public override string GetName() => Name;
 
     }
 }

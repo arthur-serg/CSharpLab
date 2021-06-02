@@ -6,7 +6,7 @@ namespace Lab2
 {
     internal class Circle : Figure
     {
-        private readonly string name;
+        string Name { get; set; } = "Circle";
 
         double Radius
         {
@@ -22,6 +22,6 @@ namespace Lab2
         }
         public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
 
-        public override string GetName() => name;
+        public override string GetName() => Name;
     }
 }

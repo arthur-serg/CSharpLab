@@ -6,9 +6,8 @@ namespace Lab2
 {
     internal class Square : Rectangle
     {
-        private readonly string name;
+        string Name { get; set; } = "Square";
         private double length;
-
         
         public Square(double length) 
         {

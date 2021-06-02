@@ -4,9 +4,9 @@ using System.Text;
 
 namespace Lab2
 {
-    abstract public class Figure
+    public abstract class Figure
     {
-        abstract public double GetArea();
-        abstract public string GetName();
+        public abstract double GetArea();
+        public abstract string GetName();
     }
 }
