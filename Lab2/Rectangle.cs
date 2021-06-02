@@ -8,9 +8,8 @@ namespace Lab2
     {
         private readonly string name;
 
-
-        double Height { get; set; }
-        double Width { get; set; }
+        double Height { get; set; } = 0;
+        double Width { get; set; } = 0;
 
         public Rectangle(double height, double width)
         {
