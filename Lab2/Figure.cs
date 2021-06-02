@@ -1,12 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Lab2
+﻿namespace Lab2
 {
     public abstract class Figure
     {
-        public abstract double GetArea();
+        public interface IPrint
+        {
+            void Print();
+        }
+        public virtual double GetArea()
+        {
+            return 0;
+        }
         public abstract string GetName();
     }
 }

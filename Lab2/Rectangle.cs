@@ -1,46 +1,44 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab2
 {
-    internal class Rectangle : Figure
+    internal class Rectangle : Figure, Figure.IPrint
     {
-        string Name { get; set; } = "Rectangle";
-
-        double Height
+        private double width;
+        private double height;
+        public string Name { get; } = "Rectangle";
+        public double Height
         {
-            get => Height;
+            get => height;
             set
             {
                 if (Height < 0)
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
-                Height = value;
+                height = value;
             }
         }
-        double Width
+        public double Width
         {
-            get => Width;
+            get => width;
             set
             {
                 if (Width < 0)
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
-                Width = value;
+                width = value;
             }
         }
-
         public Rectangle(double height, double width)
         {
             Height = height;
             Width = width;
         }
         public override double GetArea() => Height * Width;
-
         public override string GetName() => Name;
-
+        public override string ToString() => $"{GetArea()} : {Name}";
+        void IPrint.Print() => Console.WriteLine(ToString());
     }
 }

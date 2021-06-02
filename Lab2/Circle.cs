@@ -1,27 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab2
 {
-    internal class Circle : Figure
+    internal class Circle : Figure, Figure.IPrint
     {
-        string Name { get; set; } = "Circle";
-
-        double Radius
+        private double radius;
+        public string Name { get; } = "Circle";
+        public double Radius
         {
-            get => Radius;
+            get => radius;
             set
             {
                 if (Radius < 0)
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
-                Radius = value;
+                radius = value;
             }
         }
+        public Circle(double radius)
+        {
+            Radius = radius;
+        }
         public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
-
         public override string GetName() => Name;
+        public override string ToString() => $"{Name} : {GetArea()}";
+        void IPrint.Print() => Console.WriteLine(this.ToString());
     }
 }

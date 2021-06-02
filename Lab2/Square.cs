@@ -1,17 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Lab2
 {
-    internal class Square : Rectangle
+    internal class Square : Rectangle, Figure.IPrint
     {
-        string Name { get; set; } = "Square";
         private double length;
-        
-        public Square(double length) 
+        public string Name { get; } = "Square";
+        public double Length
         {
-            this.length = length;
+            get => length;
+            set
+            {
+                if (length < 0)
+                {
+                    throw new Exception("Incorrect value. expected more than zero.");
+                }
+                length = value;
+            }
         }
+        public Square(double length) : base(0, 0)
+        {
+            Length = length;
+        }
+        public override double GetArea() => Length * Length;
+        public override string ToString() => $"{Name} : {GetArea()}";
+        public override string GetName() => Name;
+        void IPrint.Print() => Console.WriteLine(this.ToString());
     }
 }
