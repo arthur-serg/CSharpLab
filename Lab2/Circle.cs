@@ -9,14 +9,8 @@ namespace Lab2
         private readonly string name;
 
         double Radius { get; set; }
-        public override double GetArea()
-        {
-            return Math.PI * Math.Pow(Radius, 2);
-        }
+        public override double GetArea() => Math.PI * Math.Pow(Radius, 2);
 
-        public override string GetName()
-        {
-            return name;
-        }
+        public override string GetName() => name;
     }
 }

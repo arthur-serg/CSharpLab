@@ -17,15 +17,9 @@ namespace Lab2
             Height = height;
             Width = width;
         }
-        public override double GetArea()
-        {
-            return Height * Width;
-        }
+        public override double GetArea() => Height * Width;
 
-        public override string GetName()
-        {
-            return name;
-        }
+        public override string GetName() => name;
 
     }
 }
