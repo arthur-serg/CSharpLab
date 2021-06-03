@@ -13,8 +13,9 @@ namespace Lab2
     {
         private Figure[] arr;
         private int count;
-        private int index = -1;
+        private int positionIndex = -1;
 
+        //TO DO: not sure.
         public MyList(int capacity)
         {
             arr = new Figure[capacity];
@@ -23,17 +24,15 @@ namespace Lab2
 
         private bool IsInRange(int index)
         {
-            if (index >= 0 && index < Count)
-                return true;
-
-            return false;
+            return index >= 0 && index < Count;
         }
 
-        //TO DO: логика индексатора
-        private Figure this[int index]
+
+        private Figure this[int idx]
         {
-            get { }
-            set { }
+            get => IsInRange(idx) ? arr[idx] : null;
+
+            set => arr[idx] = value;
         }
 
         public int Capacity
@@ -48,6 +47,7 @@ namespace Lab2
             }
         }
 
+        //TO DO: ну и тут тоже.
         public int Count { get; set; }
 
 
@@ -71,16 +71,17 @@ namespace Lab2
         // перемещение на одну позицию вперед в контейнере элементов
         public bool MoveNext()
         {
-            throw new System.NotImplementedException();
+            ++positionIndex;
+            return IsInRange(positionIndex);
         }
 
         // перемещение в начало контейнера  
         public void Reset()
         {
-            index = -1;
+            positionIndex = -1;
         }
 
         // текущий элемент в контейнере
-        public object? Current { get; }
+        public object? Current => arr[positionIndex];
     }
 }
