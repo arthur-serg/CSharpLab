@@ -2,7 +2,7 @@
 
 namespace Lab2
 {
-    internal class Rectangle : Figure, Figure.IPrint
+    internal class Rectangle : Figure, IPrint
     {
         private double width;
         private double height;

@@ -2,10 +2,6 @@
 {
     public abstract class Figure
     {
-        public interface IPrint
-        {
-            void Print();
-        }
         public virtual double GetArea()
         {
             return 0;

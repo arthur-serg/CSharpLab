@@ -11,12 +11,12 @@ namespace Lab2
             Square square = new Square(rnd.Next(0, 10));
             Circle circle = new Circle(rnd.Next(0, 10));
             Rectangle rectangle = new Rectangle(rnd.Next(0, 10), rnd.Next(0, 10));
-            List<Figure> figures = new List<Figure>();
-            Square squareTwo = new Square(10);
-            squareTwo.Length = -5;
-            figures.Add(square);
-            figures.Add(circle);
-            figures.Add(rectangle);
+            List<Figure> figures = new List<Figure>
+            {
+                square,
+                circle,
+                rectangle
+            };
             Console.WriteLine($"List.Count: {figures.Count}");
 
             Console.WriteLine($"overrided ToString():");

@@ -2,7 +2,7 @@
 
 namespace Lab2
 {
-    internal class Square : Rectangle, Figure.IPrint
+    internal class Square : Rectangle, IPrint
     {
         private double length;
         public string Name { get; } = "Square";

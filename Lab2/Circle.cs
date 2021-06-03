@@ -2,7 +2,7 @@
 
 namespace Lab2
 {
-    internal class Circle : Figure, Figure.IPrint
+    internal class Circle : Figure, IPrint
     {
         private double radius;
         public string Name { get; } = "Circle";
