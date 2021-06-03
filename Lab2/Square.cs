@@ -11,7 +11,7 @@ namespace Lab2
             get => length;
             set
             {
-                if (length < 0)
+                if (value < 0)
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }

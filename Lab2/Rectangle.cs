@@ -12,7 +12,7 @@ namespace Lab2
             get => height;
             set
             {
-                if (Height < 0)
+                if (value < 0)
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
