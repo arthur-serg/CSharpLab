@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Runtime.InteropServices.ComTypes;
 
 namespace Lab2
@@ -15,7 +16,9 @@ namespace Lab2
         private int count;
         private int positionIndex = -1;
 
-        //TO DO: not sure.
+        private static readonly Figure[] emptyArray = new Figure[0];
+
+        
         public MyList(int capacity)
         {
             arr = new Figure[capacity];
@@ -40,27 +43,48 @@ namespace Lab2
             get => arr.Length;
             set
             {
-                //TO DO: логика мутатора.
-                if (arr.Length == 0)
+                
+                if (value >0)
                 {
+                    Figure[] temp = new Figure[value];
+                    if (count > 0)
+                    {
+                        Array.Copy(arr, temp,0);
+                    }
+
+                    arr = temp;
+                }
+                else
+                {
+                    arr = emptyArray;
                 }
             }
         }
 
-        //TO DO: ну и тут тоже.
-        public int Count { get; set; }
+        
+        public int Count => count;
 
 
         public void Add(Figure item)
         {
+            if (count == arr.Length)
+            {
+                arr[count++] = item;
+            }
         }
 
+        //TO DO: implement.
         public void Sort()
         {
         }
 
         public void RemoveAt(int index)
         {
+            --count;
+            if (index < count)
+            {
+                Array.Copy(arr,index+1,arr,index,count-index);
+            }
         }
 
         public IEnumerator GetEnumerator()
