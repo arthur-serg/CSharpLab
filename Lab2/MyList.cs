@@ -74,11 +74,14 @@ namespace Lab2
 
         public void Add(Figure item)
         {
+            MoveNext();
             if (count == arr.Length)
             {
                 Capacity *= 2;
                 arr[count++] = item;
+
             }
+            
         }
 
         //TO DO: implement.
