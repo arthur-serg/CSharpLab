@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace Lab2
 {
@@ -41,6 +42,17 @@ namespace Lab2
                 {
                     Console.WriteLine($"name of {item.GetName()} starts with: {item.GetName()[0]}. {item.ToString()}");
                 }
+            }
+
+            MyList list = new MyList();
+            Console.WriteLine($"init capacity: {list.Capacity} count: {list.Count}");
+            list.Add(new Circle(3));
+            Debug.WriteLine($"{list[0]}");
+            
+            Console.WriteLine($"then capacity: {list.Capacity} count: {list.Count}");
+            foreach (var item in list)
+            {
+                Console.WriteLine(item.ToString());
             }
         }
     }

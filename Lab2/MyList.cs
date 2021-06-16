@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections;
-using System.Runtime.InteropServices.ComTypes;
+
 
 namespace Lab2
 {
@@ -15,6 +15,7 @@ namespace Lab2
         private Figure[] arr;
         private int count;
         private int positionIndex = -1;
+        private int initialCapacity = 1;
 
         private static readonly Figure[] emptyArray = new Figure[0];
 
@@ -25,13 +26,19 @@ namespace Lab2
             count = capacity;
         }
 
+        public MyList()
+        {
+            arr = new Figure[initialCapacity];
+            count = initialCapacity;
+        }
+
         private bool IsInRange(int index)
         {
             return index >= 0 && index < Count;
         }
 
 
-        private Figure this[int idx]
+        public Figure this[int idx]
         {
             get => IsInRange(idx) ? arr[idx] : null;
 
@@ -69,6 +76,7 @@ namespace Lab2
         {
             if (count == arr.Length)
             {
+                Capacity *= 2;
                 arr[count++] = item;
             }
         }
