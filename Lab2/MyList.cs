@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Diagnostics;
 
 
 namespace Lab2
@@ -13,36 +14,28 @@ namespace Lab2
     internal class MyList : IEnumerator, IEnumerable
     {
         private Figure[] arr;
-        private int count;
         private int positionIndex = -1;
-        private int initialCapacity = 1;
 
-        private static readonly Figure[] emptyArray = new Figure[0];
 
-        
         public MyList(int capacity)
         {
             arr = new Figure[capacity];
-            count = capacity;
+            Capacity = capacity;
         }
 
         public MyList()
         {
-            arr = new Figure[initialCapacity];
-            count = initialCapacity;
+            Capacity = 1;
         }
 
-        private bool IsInRange(int index)
+        private bool IsInRange(int index) => index >= 0 && index < Count;
+
+
+        public Figure this[int index]
         {
-            return index >= 0 && index < Count;
-        }
+            get => IsInRange(index) ? arr[index] : null;
 
-
-        public Figure this[int idx]
-        {
-            get => IsInRange(idx) ? arr[idx] : null;
-
-            set => arr[idx] = value;
+            set => arr[index] = value;
         }
 
         public int Capacity
@@ -50,38 +43,33 @@ namespace Lab2
             get => arr.Length;
             set
             {
-                
-                if (value >0)
+
+                if (value > 0)
                 {
                     Figure[] temp = new Figure[value];
-                    if (count > 0)
+                    Debug.WriteLine($"{Count}");
+                    if (Count > 0)
                     {
-                        Array.Copy(arr, temp,0);
+                        Array.Copy(arr, temp, arr.Length);
                     }
 
                     arr = temp;
                 }
                 else
                 {
-                    arr = emptyArray;
+                    arr = new Figure[0];
                 }
             }
         }
 
-        
-        public int Count => count;
-
+        public int Count { get; set; }
 
         public void Add(Figure item)
         {
+            arr[arr.Length - 1] = item;
+            ++Count;
             MoveNext();
-            if (count == arr.Length)
-            {
-                Capacity *= 2;
-                arr[count++] = item;
-
-            }
-            
+            if (!MoveNext()) Capacity *= 2;
         }
 
         //TO DO: implement.
@@ -91,10 +79,10 @@ namespace Lab2
 
         public void RemoveAt(int index)
         {
-            --count;
-            if (index < count)
+            --Count;
+            if (index < Count)
             {
-                Array.Copy(arr,index+1,arr,index,count-index);
+                Array.Copy(arr, index + 1, arr, index, Count - index);
             }
         }
 
@@ -116,7 +104,10 @@ namespace Lab2
             positionIndex = -1;
         }
 
+
+        object IEnumerator.Current => Current;
+
         // текущий элемент в контейнере
-        public object? Current => arr[positionIndex];
+        public Figure Current => arr[positionIndex];
     }
 }
