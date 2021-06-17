@@ -46,12 +46,9 @@ namespace Lab2
 
             MyList list = new MyList();
             Console.WriteLine($"init capacity: {list.Capacity} count: {list.Count}");
-            list.Add(new Rectangle(3,2));
-
-            for (int i = 0; i < 4; i++)
-            {
-                list.Add(new Circle(3));
-            }
+            //list.Add(new Rectangle(3,2));
+            list.Add(new Square(4));
+            
 
             //list.Add(new Square(3));
             //list.Add(new Circle(3));
@@ -63,6 +60,7 @@ namespace Lab2
             {
                 Console.WriteLine(item.ToString());
             }
+
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Lab2
         public MyList()
         {
             Capacity = 1;
+            arr = new Figure[Capacity];
         }
 
         private bool IsInRange(int index) => index >= 0 && index < Count;
@@ -43,14 +44,15 @@ namespace Lab2
             get => arr.Length;
             set
             {
-
+                //пиздёж где-то тут.
                 if (value > 0)
                 {
+                    Debug.WriteLine($"value: {value}");
                     Figure[] temp = new Figure[value];
                     Debug.WriteLine($"{Count}");
-                    if (Count > 0)
+                    if (Count >= 0)
                     {
-                        Array.Copy(arr, temp, arr.Length);
+                        Array.Copy(arr, 0, temp, 0, arr.Length);
                     }
 
                     arr = temp;
@@ -64,12 +66,17 @@ namespace Lab2
 
         public int Count { get; set; }
 
+
+        //добавляет элемент в конец контейнера, увеличивает его размер на 1. если Capacity==arr.Length, то увеличиваем Capacity вдвое.
         public void Add(Figure item)
         {
-            arr[arr.Length - 1] = item;
-            ++Count;
-            MoveNext();
-            if (!MoveNext()) Capacity *= 2;
+            int lastElementIndex = Count;
+            if (lastElementIndex < arr.Length)
+            {
+                Count = lastElementIndex++;
+                arr[lastElementIndex] = item;
+            }
+
         }
 
         //TO DO: implement.
