@@ -13,7 +13,7 @@ namespace Lab2
 
     internal class MyList : IEnumerator, IEnumerable
     {
-        private Figure[] arr;
+        private Figure[] arr = new Figure[1];
         private int positionIndex = -1;
 
 
@@ -26,7 +26,7 @@ namespace Lab2
         public MyList()
         {
             Capacity = 1;
-            arr = new Figure[Capacity];
+            arr = new Figure[1];
         }
 
         private bool IsInRange(int index) => index >= 0 && index < Count;
@@ -44,23 +44,11 @@ namespace Lab2
             get => arr.Length;
             set
             {
-                //пиздёж где-то тут.
-                if (value > 0)
+                if (Capacity==Count)
                 {
-                    Debug.WriteLine($"value: {value}");
-                    Figure[] temp = new Figure[value];
-                    Debug.WriteLine($"{Count}");
-                    if (Count >= 0)
-                    {
-                        Array.Copy(arr, 0, temp, 0, arr.Length);
-                    }
-
-                    arr = temp;
+                    Capacity *=2;
                 }
-                else
-                {
-                    arr = new Figure[0];
-                }
+                
             }
         }
 
@@ -70,13 +58,21 @@ namespace Lab2
         //добавляет элемент в конец контейнера, увеличивает его размер на 1. если Capacity==arr.Length, то увеличиваем Capacity вдвое.
         public void Add(Figure item)
         {
-            int lastElementIndex = Count;
-            if (lastElementIndex < arr.Length)
+            if (Count < arr.Length) //если есть куда аппендить
             {
-                Count = lastElementIndex++;
-                arr[lastElementIndex] = item;
-            }
+                positionIndex = Count;
+                arr[positionIndex] = item;
+                ++positionIndex;
+                MoveNext();
 
+            }
+            else
+            {
+                Figure[] temp = new Figure[Capacity];
+                Array.Copy(arr,temp,arr.Length);
+                temp[positionIndex] = item;
+                positionIndex = temp.Length+1;
+            }
         }
 
         //TO DO: implement.

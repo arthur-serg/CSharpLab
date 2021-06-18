@@ -48,10 +48,7 @@ namespace Lab2
             Console.WriteLine($"init capacity: {list.Capacity} count: {list.Count}");
             //list.Add(new Rectangle(3,2));
             list.Add(new Square(4));
-            
-
-            //list.Add(new Square(3));
-            //list.Add(new Circle(3));
+            list.Add(new Rectangle(2,3));
             Console.WriteLine($"then capacity: {list.Capacity} count: {list.Count}");
             Debug.WriteLine($"{list[0]}");
             
