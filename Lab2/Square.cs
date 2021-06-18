@@ -5,7 +5,7 @@ namespace Lab2
     internal class Square : Rectangle, IPrint
     {
         private double length;
-        public string Name { get; } = "Square";
+        public new string Name { get; } = "Square";
         public double Length
         {
             get => length;
