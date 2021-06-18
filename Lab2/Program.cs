@@ -49,7 +49,7 @@ namespace Lab2
             //list.Add(new Rectangle(3,2));
             list.Add(new Square(4));
             list.Add(new Rectangle(2,3));
-            list.Add(new Circle(1));
+            //list.Add(new Circle(1));
             //list.Add(new Rectangle(1,8));
             //list.Add(new Square(3));
 

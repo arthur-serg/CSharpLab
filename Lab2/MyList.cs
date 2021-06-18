@@ -61,43 +61,67 @@ namespace Lab2
 
 
         //добавляет элемент в конец контейнера, увеличивает его размер на 1. если Capacity==myArray.Length, то увеличиваем Capacity вдвое.
+        //public void Add(Figure item)
+        //{
+        //    int lastElemIndex = myArray.Length-1;
+        //    if (Count < Capacity)
+        //    {
+        //        myArray[lastElemIndex] = item;
+
+        //        //++positionIndex;
+        //    }
+
+        //    else if (Count == Capacity)
+        //    {
+        //        Capacity *= 2;
+        //        Figure[] temp = new Figure[Capacity];
+        //        Array.Copy(myArray, temp, 0);
+        //        temp[myArray.Length] = item;
+        //        //++Count;
+        //        //++positionIndex;
+        //    }
+
+            
+        //    ++Count;
+        //    ++positionIndex;
+        //    //else if(Count>=Capacity)
+        //    //{
+        //    //    Figure[] temp = new Figure[myArray.Length*2];
+        //    //    Array.Copy(myArray, temp, myArray.Length);
+        //    //    Array.Resize(ref myArray, myArray.Length * 2);
+
+        //    //    temp[^1] = item;
+        //    //    Count = myArray.Length + 1;
+        //    //    ++positionIndex;
+        //    //}
+
+        //}
+
+        //TO DO: implement.
+
         public void Add(Figure item)
         {
-            int lastElemIndex = myArray.Length-1;
-            if (Count < Capacity)
-            {
-                myArray[lastElemIndex] = item;
 
-                //++positionIndex;
-            }
-
-            else if (Count == Capacity)
+            int lastElementIndex = myArray.Length - 1; //индекс последнего элемента
+            if (Count < Capacity) //если можно аппендить
             {
-                Capacity *= 2;
-                Figure[] temp = new Figure[Capacity];
-                Array.Copy(myArray, temp, 0);
-                temp[myArray.Length] = item;
-                //++Count;
-                //++positionIndex;
+                myArray[lastElementIndex] = item; //закидываем в конец
+                ++Count; //длину увеличили
+                ++positionIndex;
+                if (Count == Capacity) //если аппендить некуда
+                {
+                    Figure[] temp = new Figure[Capacity * 2]; //новый массив с капасити х2
+                    Array.Copy(myArray, temp, 0); //копируем из исходного в новый начиная с 0 элемента
+                    temp[myArray.Length] = item; //закидываем в новый массив на место следующего элемента
+                    Capacity *= 2;
+                    Count = myArray.Length + 1; //увеличиваем длину
+                    ++positionIndex;
+                }
             }
 
             
-            ++Count;
-            ++positionIndex;
-            //else if(Count>=Capacity)
-            //{
-            //    Figure[] temp = new Figure[myArray.Length*2];
-            //    Array.Copy(myArray, temp, myArray.Length);
-            //    Array.Resize(ref myArray, myArray.Length * 2);
-
-            //    temp[^1] = item;
-            //    Count = myArray.Length + 1;
-            //    ++positionIndex;
-            //}
 
         }
-
-        //TO DO: implement.
         public void Sort()
         {
         }
