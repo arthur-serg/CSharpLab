@@ -13,21 +13,21 @@ namespace Lab2
 
     internal class MyList : IEnumerator, IEnumerable
     {
+        private const int InitialCapacity = 2;
         private Figure[] myArray = new Figure[1];
-        private int positionIndex = -1;
+        private int positionIndex = 0;
 
-
-        public MyList(int capacity)
+        public MyList(int capacity = InitialCapacity)
         {
-            myArray = new Figure[capacity];
             Capacity = capacity;
+            myArray = new Figure[capacity];
         }
 
-        public MyList()
-        {
-            myArray = new Figure[1];
-            Capacity = 1;
-        }
+        //public MyList()
+        //{
+        //    Capacity = 1;
+        //    myArray = new Figure[1];
+        //}
 
         private bool IsInRange(int index) => index >= 0 && index <= Count;
 
@@ -39,25 +39,28 @@ namespace Lab2
             set => myArray[index] = value;
         }
 
+        public int Count { get; set; } = 0;
         //переделать
-        public int Capacity
-        {
-            get => myArray.Length;
-            set
-            {
-                if (value <= 0) return;
-                Figure[] temp = new Figure[value * 2];
-                if (Count > 0)
-                {
-                    Array.Copy(myArray,temp,0);
-                }
-
-                myArray = temp;
-            }
-        }
+        public int Capacity { get; set; }
+        
+            //get => myArray.Length;
+            //set
+            //{
+            //    if (value <= 0) return;
+            //    Figure[] temp = new Figure[value * 2];
+            //    if (Count > 0)
+            //    {
+            //        Array.Copy(myArray, temp, 0);
+            //    }
+            //    myArray = temp;
+            //}
 
 
-        public int Count { get; set; } 
+
+        
+
+
+        
 
 
         //добавляет элемент в конец контейнера, увеличивает его размер на 1. если Capacity==myArray.Length, то увеличиваем Capacity вдвое.
@@ -101,26 +104,25 @@ namespace Lab2
 
         public void Add(Figure item)
         {
-
-            int lastElementIndex = myArray.Length - 1; //индекс последнего элемента
-            if (Count < Capacity) //если можно аппендить
+            if (IsInRange(positionIndex))
             {
-                myArray[lastElementIndex] = item; //закидываем в конец
-                ++Count; //длину увеличили
-                ++positionIndex;
-                if (Count == Capacity) //если аппендить некуда
+                if (positionIndex < Capacity - 1)
                 {
-                    Figure[] temp = new Figure[Capacity * 2]; //новый массив с капасити х2
-                    Array.Copy(myArray, temp, 0); //копируем из исходного в новый начиная с 0 элемента
-                    temp[myArray.Length] = item; //закидываем в новый массив на место следующего элемента
-                    Capacity *= 2;
-                    Count = myArray.Length + 1; //увеличиваем длину
+                    myArray[positionIndex] = item;
                     ++positionIndex;
+                }
+                else if (positionIndex >= Capacity - 1)
+                {
+                    Figure[] tempArray = new Figure[myArray.Length * 2];
+                    Array.Copy(myArray,tempArray,myArray.Length);
+                    tempArray[myArray.Length - 1] = item;
+                    ++positionIndex;
+                    Capacity *= 2;
+                    myArray = tempArray;
                 }
             }
 
-            
-
+            Count = positionIndex + 1;
         }
         public void Sort()
         {
@@ -157,6 +159,6 @@ namespace Lab2
         object IEnumerator.Current => Current;
 
         // текущий элемент в контейнере
-        public Figure Current => myArray[positionIndex];
+        public Figure Current => myArray[positionIndex-1];
     }
 }
