@@ -108,13 +108,13 @@ namespace Lab2
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>) myArray).GetEnumerator();
+            return ((IEnumerable<T>) myArray.Where(x=> !EqualityComparer<T>.Default.Equals(x, default(T)))).GetEnumerator();
         }
 
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return (IEnumerator) GetEnumerator();
+            return (IEnumerator)GetEnumerator();
         }
 
         // текущий элемент в контейнере
