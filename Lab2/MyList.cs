@@ -16,6 +16,7 @@ namespace Lab2
         private const int InitialCapacity = 2;
         private Figure[] myArray;
         private int positionIndex = 0;
+        private int capacity;
 
         public MyList(int capacity = InitialCapacity)
         {
@@ -36,7 +37,26 @@ namespace Lab2
         public int Count { get; set; } = 0;
 
         //переделать
-        public int Capacity { get; set; }
+        public int Capacity
+        {
+            get => myArray?.Length ?? 0;
+
+            set
+            {
+                if (myArray == null)
+                {
+                    capacity = InitialCapacity;
+                }
+                else if (positionIndex == myArray.Length - 1)
+                {
+                    capacity *= InitialCapacity;
+                }
+                else
+                {
+                    capacity = value;
+                }
+            }
+        }
 
         //добавляет элемент в конец контейнера, увеличивает его размер на 1. если Capacity==myArray.Length, то увеличиваем Capacity вдвое.
 
@@ -44,19 +64,19 @@ namespace Lab2
         {
             if (positionIndex < Capacity - 1)
             {
-                myArray[positionIndex++] = item;
+                myArray[positionIndex] = item;
             }
             else if (positionIndex >= Capacity - 1)
             {
                 Figure[] tempArray = new Figure[myArray.Length * 2];
                 Array.Copy(myArray, tempArray, myArray.Length);
                 tempArray[myArray.Length - 1] = item;
-                ++positionIndex;
                 Capacity *= 2;
                 myArray = tempArray;
             }
 
             Count = positionIndex + 1;
+            ++positionIndex;
         }
 
         //TO DO: implement.
