@@ -7,5 +7,7 @@
             return 0;
         }
         public abstract string GetName();
+
+        
     }
 }
