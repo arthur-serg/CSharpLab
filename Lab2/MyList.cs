@@ -6,10 +6,8 @@ using System.Collections.Generic;
 
 namespace Lab2
 {
-
     internal class MyList<T> : IEnumerable<T>
     {
-
         private const int InitialCapacity = 2;
         private T[] myArray;
         private int positionIndex = 0;
@@ -77,11 +75,9 @@ namespace Lab2
         }
 
 
-
         //TO DO: implement Sort by GetArea()
         public void Sort()
         {
-
         }
 
         public void RemoveAt(int index)
@@ -106,7 +102,7 @@ namespace Lab2
 
         public IEnumerator<T> GetEnumerator()
         {
-            return (IEnumerator<T>)this;
+            return (IEnumerator<T>) this;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -114,15 +110,14 @@ namespace Lab2
             return GetEnumerator();
         }
 
-        
 
         // текущий элемент в контейнере
         public object? Current => myArray[positionIndex - 1];
-
     }
 
 
     #region MyList collection as non-generic. Deprecated
+
     /*
     internal class MyList : IEnumerator, IEnumerable
     {
@@ -236,6 +231,4 @@ namespace Lab2
     */
 
     #endregion
-
-
 }
