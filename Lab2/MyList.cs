@@ -21,7 +21,6 @@ namespace Lab2
 
         private bool IsInRange(int index) => index >= 0 && index <= Count;
 
-
         public T this[int index]
         {
             get => IsInRange(index) ? myArray[index] : default;
@@ -45,6 +44,7 @@ namespace Lab2
                 else if (positionIndex == myArray.Length - 1)
                 {
                     capacity *= InitialCapacity;
+                    myArray = new T[capacity];
                 }
                 else
                 {
@@ -91,6 +91,12 @@ namespace Lab2
 
         public bool MoveNext()
         {
+            if (positionIndex == myArray.Length)
+            {
+                Reset();
+                return false;
+            }
+
             ++positionIndex;
             return IsInRange(positionIndex);
         }
@@ -102,17 +108,17 @@ namespace Lab2
 
         public IEnumerator<T> GetEnumerator()
         {
-            return (IEnumerator<T>) this;
+            return ((IEnumerable<T>) myArray).GetEnumerator();
         }
+
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            return GetEnumerator();
+            return (IEnumerator) GetEnumerator();
         }
 
-
         // текущий элемент в контейнере
-        public object? Current => myArray[positionIndex - 1];
+        public T Current => myArray[positionIndex - 1];
     }
 
 

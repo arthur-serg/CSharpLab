@@ -44,7 +44,7 @@ namespace Lab2
             //    }
             //}
             
-            MyList list = new MyList();
+            MyList<Figure> list = new MyList<Figure>();
             Console.WriteLine($"init capacity: {list.Capacity} count: {list.Count}");
             list.Add(new Rectangle(3,82));
             list.Add(new Square(4));
@@ -67,8 +67,7 @@ namespace Lab2
 
             foreach (var item in list)
             {
-                Console.WriteLine(item.ToString());
-                
+                Console.WriteLine(item);
             }
 
 
@@ -80,7 +79,7 @@ namespace Lab2
 
             foreach (var item in doubleList)
             {
-                Console.WriteLine(item.ToString());
+                Console.WriteLine(item);
 
             }
         }
