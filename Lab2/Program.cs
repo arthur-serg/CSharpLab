@@ -44,36 +44,10 @@ namespace Lab2
             //    }
             //}
             
-            MyList<Figure> list = new MyList<Figure>();
-            Console.WriteLine($"init capacity: {list.Capacity} count: {list.Count}");
-            list.Add(new Rectangle(3,82));
-            list.Add(new Square(4));
-            list.Add(new Rectangle(2,31));
-            list.Add(new Circle(1));
-            list.Add(new Rectangle(8,8));
-            list.Add(new Square(3));
-            list.Add(new Square(3));
-            list.Add(new Square(3));
-            list.Add(new Square(3));
-            list.Add(new Square(3));
-            list.Add(new Square(3));
-
-            Console.WriteLine($"added {list.Count} elements. capacity: {list.Capacity} ");
-
-            list.RemoveAt(4);
-
-
-            Console.WriteLine($"then capacity: {list.Capacity} count: {list.Count}");
-
-            foreach (var item in list)
-            {
-                Console.WriteLine(item);
-            }
-
-
-            MyList<double> doubleList = new MyList<double>();
+            var doubleList = new MyList<double>();
             doubleList.Add(3.0);
             doubleList.Add(4.0);
+            doubleList.Add(0.0);
             doubleList.Add(6.0);
             doubleList.Add(7.0);
             doubleList.Add(8.0);
@@ -85,6 +59,7 @@ namespace Lab2
             {
                 Console.WriteLine(item);
             }
+
         }
     }
 }

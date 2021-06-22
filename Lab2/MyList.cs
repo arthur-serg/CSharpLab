@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Lab2
 {
-    internal class MyList<T> : IEnumerable<T>
+    internal class MyList<T> : IEnumerable<T>, IComparer<T>
     {
         private const int InitialCapacity = 2;
         private T[] myArray;
@@ -75,10 +75,21 @@ namespace Lab2
         }
 
 
-        //TO DO: implement Sort by GetArea()
-        public void Sort()
-        {
-        }
+        //TO DO: implement Sort
+        //public MyList<T> BubbleSort(MyList<T> collection)
+        //{
+        //}
+
+        //public MyList<T> MergeSort(MyList<T> collection)
+        //{
+
+        //}
+
+        //public MyList<T> SelectionSort(MyList<T> collection)
+        //{
+
+        //}
+
 
         public void RemoveAt(int index)
         {
@@ -89,16 +100,23 @@ namespace Lab2
             }
         }
 
+
         public bool MoveNext()
         {
-            if (positionIndex == myArray.Length)
-            {
-                Reset();
-                return false;
-            }
+            //if (positionIndex == Count)
+            //{
+            //    Reset();
+            //    return false;
+            //}
 
+            //++positionIndex;
+            //return IsInRange(positionIndex);
+
+
+            if (!IsInRange(positionIndex)) return false;
             ++positionIndex;
-            return IsInRange(positionIndex);
+            return true;
+
         }
 
         public void Reset()
@@ -106,19 +124,26 @@ namespace Lab2
             positionIndex = 0;
         }
 
+
         public IEnumerator<T> GetEnumerator()
         {
-            return (myArray.Where(x => !EqualityComparer<T>.Default.Equals(x, default)))?.GetEnumerator();
+            return ((IEnumerable<T>)myArray).GetEnumerator();
         }
 
+        //return myArray.Where(x => !EqualityComparer<T>.Default.Equals(x, default))?.GetEnumerator();
 
         IEnumerator IEnumerable.GetEnumerator()
         {
             return GetEnumerator();
         }
 
+        int IComparer<T>.Compare(T x, T y)
+        {
+            throw new NotImplementedException();
+        }
+
         // текущий элемент в контейнере
-        public T Current => myArray[positionIndex - 1];
+        public T Current => IsInRange(positionIndex) ? myArray[positionIndex - 1] : default;
     }
 
 
