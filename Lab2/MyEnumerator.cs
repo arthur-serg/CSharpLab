@@ -8,7 +8,7 @@ namespace Lab2
     internal class MyEnumerator<T> : IEnumerator<T>
     {
         private readonly T[] myArray;
-        private int positionIndex = -1;
+        private int position = 0;
 
         public MyEnumerator(T[] myArray)
         {
@@ -19,13 +19,13 @@ namespace Lab2
         {
             get
             {
-                if (positionIndex >= 0 && positionIndex <= myArray.Length)
-                    return myArray[positionIndex];
+                if (position >= 0 && position <= myArray.Length)
+                    return myArray[position];
                 throw new InvalidOperationException();
             }
         }
 
-        T IEnumerator<T>.Current => myArray[positionIndex - 1];
+        T IEnumerator<T>.Current => myArray[position - 1];
 
         object IEnumerator.Current => throw new NotImplementedException();
 
@@ -37,9 +37,9 @@ namespace Lab2
          public bool MoveNext()
         {
             
-            if (positionIndex >= 0 && positionIndex < myArray.Length)
+            if (position >= 0 && position <= myArray.Length-1)
             {
-                ++positionIndex;
+                ++position;
                 return true;
             }
 
@@ -48,7 +48,7 @@ namespace Lab2
 
         void IEnumerator.Reset()
         {
-            positionIndex = -1;
+            position = -1;
         }
     }
 }
