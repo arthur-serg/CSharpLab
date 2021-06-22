@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Lab2
 {
-    internal class MyList<T> : IEnumerable<T>, IComparer<T>
+    internal class MyList<T> :  IComparer<T>
     {
         private const int InitialCapacity = 2;
         private T[] myArray;
@@ -101,41 +101,27 @@ namespace Lab2
         }
 
 
-        public bool MoveNext()
-        {
-            //if (positionIndex == Count)
-            //{
-            //    Reset();
-            //    return false;
-            //}
+        //public bool MoveNext()
+        //{
+        //    if (!IsInRange(positionIndex)) return false;
+        //    ++positionIndex;
+        //    return true;
+        //}
 
-            //++positionIndex;
-            //return IsInRange(positionIndex);
-
-
-            if (!IsInRange(positionIndex)) return false;
-            ++positionIndex;
-            return true;
-
-        }
-
-        public void Reset()
-        {
-            positionIndex = 0;
-        }
+        //public void Reset()
+        //{
+        //    positionIndex = 0;
+        //}
 
 
         public IEnumerator<T> GetEnumerator()
         {
-            return ((IEnumerable<T>)myArray).GetEnumerator();
+            return new MyEnumerator<T>(myArray);
         }
 
         //return myArray.Where(x => !EqualityComparer<T>.Default.Equals(x, default))?.GetEnumerator();
 
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
+        // IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         int IComparer<T>.Compare(T x, T y)
         {
@@ -143,7 +129,7 @@ namespace Lab2
         }
 
         // текущий элемент в контейнере
-        public T Current => IsInRange(positionIndex) ? myArray[positionIndex - 1] : default;
+        // public T Current => IsInRange(positionIndex) ? myArray[positionIndex - 1] : default;
     }
 
 
