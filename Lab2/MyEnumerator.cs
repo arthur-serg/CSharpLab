@@ -7,37 +7,35 @@ namespace Lab2
 {
     internal class MyEnumerator<T> : IEnumerator<T>
     {
-        private readonly T[] myArray;
+        private readonly MyList<T> myList;
         private int position = 0;
 
-        public MyEnumerator(T[] myArray)
+        public MyEnumerator(MyList<T> myList)
         {
-            this.myArray = myArray;
+            this.myList = myList;
         }
 
         public T Current
         {
             get
             {
-                if (position >= 0 && position <= myArray.Length)
-                    return myArray[position];
+                if (position >= 0 && position <= myList.Count - 1)
+                    return myList[position];
                 throw new InvalidOperationException();
             }
         }
 
-        T IEnumerator<T>.Current => myArray[position - 1];
+        T IEnumerator<T>.Current => myList[position - 1];
 
         object IEnumerator.Current => throw new NotImplementedException();
 
         void IDisposable.Dispose()
         {
-            
         }
 
-         public bool MoveNext()
+        public bool MoveNext()
         {
-            
-            if (position >= 0 && position <= myArray.Length-1)
+            if (position >= 0 && position <= myList.Count - 1)
             {
                 ++position;
                 return true;

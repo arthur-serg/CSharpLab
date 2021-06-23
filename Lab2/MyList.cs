@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Lab2
 {
-    internal class MyList<T> :  IComparer<T>
+    internal class MyList<T> : IComparer<T>
     {
         private const int InitialCapacity = 2;
         private T[] myArray;
@@ -101,35 +101,16 @@ namespace Lab2
         }
 
 
-        //public bool MoveNext()
-        //{
-        //    if (!IsInRange(positionIndex)) return false;
-        //    ++positionIndex;
-        //    return true;
-        //}
-
-        //public void Reset()
-        //{
-        //    positionIndex = 0;
-        //}
-
-
         public IEnumerator<T> GetEnumerator()
         {
-            return new MyEnumerator<T>(myArray);
+            MyList<T> collection = this;
+            return new MyEnumerator<T>(collection);
         }
-
-        //return myArray.Where(x => !EqualityComparer<T>.Default.Equals(x, default))?.GetEnumerator();
-
-        // IEnumerator IEnumerable.GetEnumerator() => GetEnumerator();
 
         int IComparer<T>.Compare(T x, T y)
         {
             throw new NotImplementedException();
         }
-
-        // текущий элемент в контейнере
-        // public T Current => IsInRange(positionIndex) ? myArray[positionIndex - 1] : default;
     }
 
 
