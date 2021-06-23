@@ -31,22 +31,8 @@ namespace Lab2
         {
             get => myArray?.Length ?? 0;
 
-            set
-            {
-                if (myArray == null)
-                {
-                    capacity = InitialCapacity;
-                }
-                else if (positionIndex == myArray.Length - 1)
-                {
-                    capacity *= InitialCapacity;
-                    myArray = new T[capacity];
-                }
-                else
-                {
-                    capacity = value;
-                }
-            }
+            set => myArray = new T[value];
+
         }
 
         public void Add(T item)
