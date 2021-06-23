@@ -81,8 +81,7 @@ namespace Lab2
 
         public IEnumerator<T> GetEnumerator()
         {
-            MyList<T> collection = this;
-            return new MyEnumerator<T>(collection);
+            return new MyEnumerator<T>(this);
         }
 
         int IComparer<T>.Compare(T x, T y)

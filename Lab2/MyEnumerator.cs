@@ -10,10 +10,7 @@ namespace Lab2
         private readonly MyList<T> myList;
         private int position;
 
-        public MyEnumerator(MyList<T> myList)
-        {
-            this.myList = myList;
-        }
+        public MyEnumerator(MyList<T> myList) => this.myList = myList;
 
         T IEnumerator<T>.Current => myList[position - 1];
 
@@ -25,7 +22,7 @@ namespace Lab2
 
         public bool MoveNext()
         {
-            if (position >= 0 && position <= myList.Count - 1)
+            if (position <= myList.Count - 1)
             {
                 ++position;
                 return true;
