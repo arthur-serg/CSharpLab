@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace Lab2
@@ -11,6 +12,10 @@ namespace Lab2
         private int position;
 
         public MyEnumerator(MyList<T> myList) => this.myList = myList;
+
+        //TO DO: review logic maybe.
+        public MyEnumerator(List<T> collection) => myList = new MyList<T>(collection);
+        
 
         T IEnumerator<T>.Current => myList[position - 1];
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+
 
 namespace Lab2
 {
@@ -12,6 +14,12 @@ namespace Lab2
         {
             Capacity = capacity;
             myArray = new T[capacity];
+        }
+
+        public MyList(List<T> collection)
+        {
+            Capacity = collection.Capacity;
+            myArray = collection.ToArray();
         }
 
         private bool IsInRange(int index) => index >= 0 && index <= Count;
@@ -50,6 +58,22 @@ namespace Lab2
             Count++;
         }
 
+        //TO DO: implement overloading
+
+        //public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs)
+        //{
+        //    MyList<T> result = new MyList<T>(lhs.Count);
+        //    if (lhs.Count == rhs.Count)
+        //    {
+        //        (MyList<T> first, MyList<T> second) = (lhs, rhs);
+        //    }
+        //    else
+        //    {
+        //        throw new ArgumentException($"Element count of lists are not equal");
+        //    }
+        //}
+
+
         //TO DO: implement Sort
 
         public void RemoveAt(int index)
@@ -61,10 +85,10 @@ namespace Lab2
             }
         }
 
-        public IEnumerator<T> GetEnumerator()
-        {
-            return new MyEnumerator<T>(this);
-        }
+        public IEnumerator<T> GetEnumerator() => new MyEnumerator<T>(this);
+
+        //TO DO: smthing wrong will this overloaded GetEnumerator() call.
+        public IEnumerator<T> GetEnumerator(List<T> collection) => new MyEnumerator<T>(collection);
 
         int IComparer<T>.Compare(T x, T y)
         {
