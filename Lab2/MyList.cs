@@ -7,8 +7,6 @@ namespace Lab2
     {
         private const int InitialCapacity = 2;
         private T[] myArray;
-        private int positionIndex;
-        private int capacity;
 
         public MyList(int capacity = InitialCapacity)
         {
@@ -32,16 +30,15 @@ namespace Lab2
             get => myArray?.Length ?? 0;
 
             set => myArray = new T[value];
-
         }
 
         public void Add(T item)
         {
-            if (positionIndex < Capacity - 1)
+            if (Count < Capacity - 1)
             {
-                myArray[positionIndex] = item;
+                myArray[Count] = item;
             }
-            else if (positionIndex >= Capacity - 1)
+            else if (Count >= Capacity - 1)
             {
                 var tempArray = new T[myArray.Length * 2];
                 Array.Copy(myArray, tempArray, myArray.Length);
@@ -50,8 +47,7 @@ namespace Lab2
                 myArray = tempArray;
             }
 
-            Count = positionIndex + 1;
-            ++positionIndex;
+            Count++;
         }
 
         //TO DO: implement Sort
