@@ -5,7 +5,8 @@ namespace Lab2
     internal class Square : Rectangle, IPrint
     {
         private double length;
-        public new string Name { get; } = "Square";
+        public new string Name => "Square";
+
         public double Length
         {
             get => length;
@@ -15,13 +16,16 @@ namespace Lab2
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
+
                 length = value;
             }
         }
+
         public Square(double length) : base(0, 0)
         {
             Length = length;
         }
+
         public override double GetArea() => Length * Length;
         public override string ToString() => $"{Name} : {GetArea()}";
         public override string GetName() => Name;

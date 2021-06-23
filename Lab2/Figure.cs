@@ -2,12 +2,8 @@
 {
     public abstract class Figure
     {
-        public virtual double GetArea()
-        {
-            return 0;
-        }
-        public abstract string GetName();
+        public virtual double GetArea() => 0;
 
-        
+        public abstract string GetName();
     }
 }

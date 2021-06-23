@@ -6,7 +6,8 @@ namespace Lab2
     {
         private double width;
         private double height;
-        public string Name { get; } = "Rectangle";
+        public string Name => "Rectangle";
+
         public double Height
         {
             get => height;
@@ -16,9 +17,11 @@ namespace Lab2
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
+
                 height = value;
             }
         }
+
         public double Width
         {
             get => width;
@@ -28,14 +31,17 @@ namespace Lab2
                 {
                     throw new Exception("Incorrect value. expected more than zero.");
                 }
+
                 width = value;
             }
         }
+
         public Rectangle(double height, double width)
         {
             Height = height;
             Width = width;
         }
+
         public override double GetArea() => Height * Width;
         public override string GetName() => Name;
         public override string ToString() => $"{GetArea()} : {Name}";
