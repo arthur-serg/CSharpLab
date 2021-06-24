@@ -13,5 +13,7 @@ namespace Lab2
                 Console.WriteLine(item);
             }
         }
+
+        
     }
 }

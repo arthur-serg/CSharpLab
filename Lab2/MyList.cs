@@ -67,18 +67,18 @@ namespace Lab2
 
         //TO DO: implement overloading
 
-        //public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs)
-        //{
-        //    MyList<T> result = new MyList<T>(lhs.Count);
-        //    if (lhs.Count == rhs.Count)
-        //    {
-        //        (MyList<T> first, MyList<T> second) = (lhs, rhs);
-        //    }
-        //    else
-        //    {
-        //        throw new ArgumentException($"Element count of lists are not equal");
-        //    }
-        //}
+        public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs)
+        {
+            MyList<T> result = new MyList<T>();
+            if (lhs.Count == rhs.Count)
+            {
+                
+            }
+
+            throw new Exception("arguments has different Count.");
+
+            return result;
+        }
 
 
         //TO DO: implement Sort
