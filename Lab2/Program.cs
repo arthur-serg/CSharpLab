@@ -15,11 +15,7 @@ namespace Lab2
             doubleFirstList.Add(2.0);
             doubleFirstList.Add(3.0);
             Console.WriteLine($"doubleList cap: {doubleFirstList.Capacity} count: {doubleFirstList.Count}");
-
-            foreach (var item in doubleFirstList)
-            {
-                Console.WriteLine(item);
-            }
+            doubleFirstList.Print();
 
             var doubleSecondList = new MyList<double>();
             doubleSecondList.Add(1);
@@ -28,33 +24,21 @@ namespace Lab2
             doubleSecondList.Add(-2);
             doubleSecondList.Add(-3);
             Console.WriteLine($"doubleList cap: {doubleSecondList.Capacity} count: {doubleSecondList.Count}");
-
-            foreach (var item in doubleSecondList)
-            {
-                Console.WriteLine(item);
-            }
+            doubleSecondList.Print();
 
 
             var figureList = new MyList<Figure>();
             figureList.Add(new Circle(1));
             figureList.Add(new Square(6));
             figureList.Add(new Rectangle(1,6));
-            foreach (var item in figureList)
-            {
-                Console.WriteLine(item);
-            }
+            figureList.Print();
 
             var list = new List<double>();
             list.Add(-1);
             list.Add(5);
 
             var toMyList = new MyList<double>(list);
-
-
-            foreach (var item in toMyList)
-            {
-                Console.WriteLine(item);
-            }
+            toMyList.Print();
         }
     }
 }
