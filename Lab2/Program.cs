@@ -48,9 +48,10 @@ namespace Lab2
             list.Add(-1);
             list.Add(5);
 
-            var debugList = new MyList<double>(list);
-            
-            foreach (var item in debugList)
+            var toMyList = new MyList<double>(list);
+
+
+            foreach (var item in toMyList)
             {
                 Console.WriteLine(item);
             }

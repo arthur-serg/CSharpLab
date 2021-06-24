@@ -13,10 +13,6 @@ namespace Lab2
 
         public MyEnumerator(MyList<T> myList) => this.myList = myList;
 
-        //TO DO: review logic maybe.
-        public MyEnumerator(List<T> collection) => myList = new MyList<T>(collection);
-        
-
         T IEnumerator<T>.Current => myList[position - 1];
 
         object IEnumerator.Current => throw new NotImplementedException();

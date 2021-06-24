@@ -4,8 +4,7 @@ using System.Text;
 
 namespace Lab2
 {
-    internal static class MyListExtension 
+    internal static class MyListExtension
     {
-
     }
 }

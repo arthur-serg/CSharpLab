@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 
 
 namespace Lab2
@@ -16,11 +18,16 @@ namespace Lab2
             myArray = new T[capacity];
         }
 
-        public MyList(List<T> collection)
+        public MyList(IEnumerable<T> ie, int capacity = InitialCapacity)
         {
-            Capacity = collection.Capacity;
-            myArray = collection.ToArray();
+            Capacity = capacity;
+            myArray = new T[capacity];
+            foreach (var item in ie)
+            {
+                Add(item);
+            }
         }
+
 
         private bool IsInRange(int index) => index >= 0 && index <= Count;
 
@@ -87,8 +94,6 @@ namespace Lab2
 
         public IEnumerator<T> GetEnumerator() => new MyEnumerator<T>(this);
 
-        //TO DO: smthing wrong will this overloaded GetEnumerator() call.
-        public IEnumerator<T> GetEnumerator(List<T> collection) => new MyEnumerator<T>(collection);
 
         int IComparer<T>.Compare(T x, T y)
         {
