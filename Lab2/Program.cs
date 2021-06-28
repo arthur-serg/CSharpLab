@@ -38,7 +38,16 @@ namespace Lab2
             list.Add(5);
 
             var toMyList = new MyList<double>(list);
-            toMyList.Print();
+            //toMyList.Print();
+
+            MyList<int> debugList = new MyList<int>();
+            debugList.Add(1);
+            debugList.Add(2);
+            debugList.Add(3);
+            debugList.Print();
+            debugList.AddRange(0,debugList);
+            debugList.Print();
+
         }
     }
 }

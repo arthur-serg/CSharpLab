@@ -65,11 +65,69 @@ namespace Lab2
             Count++;
         }
 
+
+
+
+
+        /*
+           // Adds the elements of the given collection to the end of this list. If
+           // required, the capacity of the list is increased to twice the previous
+           // capacity or the new size, whichever is larger.
+           //
+           //AddRange will be useful for overloading of * operator.
+         
+          Порядок элементов в коллекции сохраняется в List<T> .
+          Если новый Count (текущий Count плюс размер коллекции) будет больше Capacity ,
+          емкость List<T> увеличивается путем автоматического повторного выделения внутреннего массива для размещения новых элементов, 
+          а существующие элементы копируются в новый массив перед добавлением новых элементов.
+         */
+
+        //TO DO: check Array borders. 
+        // maybe AddRange(int index, IEnumerable<T> collection) ????
+        public void AddRange(int index, MyList<T> collection)
+        {
+            T[] temp = new T[myArray.Length-1];
+            if (this == collection)
+            {
+                Capacity += Count;
+                Array.Copy(temp,0,myArray,index,Count);
+                Array.Copy(temp,index+Count,myArray,index*2,Count-index);
+            }
+        }
+
+        //Выполняет поиск элемента, удовлетворяющего условиям указанного предиката, и возвращает первое найденное вхождение в пределах всего списка List<T>.
+        public void Find()
+        {
+
+        }
+
+        //Изменяет порядок элементов во всем списке List<T> на обратный.
+        public void Inverse()
+        {
+
+        }
+
+        //Изменяет порядок элементов в указанном диапазоне.
+        public void Inverse(int index, int count)
+        {
+
+        }
+
+        public void Shuffle()
+        {
+
+        }
+
+
         //TO DO: implement overloading
 
-        public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs)
+        
+
+
+        public static MyList<T> operator +(List<T> lhs, MyList<T> rhs)
         {
-            MyList<T> result = new MyList<T>();
+            var result = new MyList<T>((lhs));
+
             if (lhs.Count == rhs.Count)
             {
                 
