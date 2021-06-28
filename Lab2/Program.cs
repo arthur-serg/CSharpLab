@@ -44,9 +44,14 @@ namespace Lab2
             debugList.Add(1);
             debugList.Add(2);
             debugList.Add(3);
-            debugList.Print();
+            //debugList.Print();
             debugList.AddRange(0,debugList);
             debugList.Print();
+
+            //debugList.CloneCollection().CloneCollection().Print();
+
+
+
 
         }
     }

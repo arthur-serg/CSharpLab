@@ -86,13 +86,24 @@ namespace Lab2
         // maybe AddRange(int index, IEnumerable<T> collection) ????
         public void AddRange(int index, MyList<T> collection)
         {
-            T[] temp = new T[myArray.Length-1];
-            if (this == collection)
+            
+            if (collection==this)
             {
-                Capacity += Count;
-                Array.Copy(temp,0,myArray,index,Count);
-                Array.Copy(temp,index+Count,myArray,index*2,Count-index);
+                collection.CloneCollection();
             }
+        }
+
+        public MyList<T> CloneCollection()
+        {
+            var result = new MyList<T>();
+            T[] temp = myArray;
+            Array.Copy(myArray, 0, temp, 0, Count);
+            Capacity *= InitialCapacity;
+            Array.Copy(temp, 0, myArray, 0, Count);
+            Array.Copy(temp, 0, myArray, Count, Count);
+
+            result = new MyList<T>(myArray.ToList());
+            return result;
         }
 
         //Выполняет поиск элемента, удовлетворяющего условиям указанного предиката, и возвращает первое найденное вхождение в пределах всего списка List<T>.
@@ -138,6 +149,17 @@ namespace Lab2
             return result;
         }
 
+        public static MyList<T> operator *(MyList<T> myList, double x)
+        {
+            var result = new MyList<T>();
+
+            for (int i = 0; i <= x; i++)
+            {
+                myList.CloneCollection();
+            }
+
+            return myList;
+        }
 
         //TO DO: implement Sort
 
