@@ -66,9 +66,6 @@ namespace Lab2
         }
 
 
-
-
-
         /*
            // Adds the elements of the given collection to the end of this list. If
            // required, the capacity of the list is increased to twice the previous
@@ -86,53 +83,67 @@ namespace Lab2
         // maybe AddRange(int index, IEnumerable<T> collection) ????
         public void AddRange(int index, MyList<T> collection)
         {
-            
-            if (collection==this)
+            if (collection == this)
             {
                 collection.CloneCollection();
             }
         }
 
+        //public MyList<T> CloneCollection(IEnumerable<T> collection)
+        //{
+
+        //}
+
+
+        //добавляет к текущей коллекции её же саму. Count увеличивается соответственно с каждым вызовом. Capacity аналогично.
+        //TO DO: фикс лишних нулей в конце списка.
         public MyList<T> CloneCollection()
         {
             var result = new MyList<T>();
             T[] temp = myArray;
+            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
             Array.Copy(myArray, 0, temp, 0, Count);
-            Capacity *= InitialCapacity;
-            Array.Copy(temp, 0, myArray, 0, Count);
-            Array.Copy(temp, 0, myArray, Count, Count);
+            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            //N.B.: любой сет капасити создает новый myArray с дефолтными значениями.
+            //Важно где-то хранить myArray со старым значением капасити до вызова мутатора.
 
-            result = new MyList<T>(myArray.ToList());
+            Capacity += Count-1;
+            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
+            Array.Copy(temp, 0, myArray, 0, Count);
+            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            //TO DO: где-то здесь херня.
+            Array.Copy(temp, 0, myArray, Count, Capacity-Count);
+            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            
+            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            Count += Count;
+            result = new MyList<T>(myArray);
+
             return result;
         }
 
         //Выполняет поиск элемента, удовлетворяющего условиям указанного предиката, и возвращает первое найденное вхождение в пределах всего списка List<T>.
         public void Find()
         {
-
         }
 
         //Изменяет порядок элементов во всем списке List<T> на обратный.
         public void Inverse()
         {
-
         }
 
         //Изменяет порядок элементов в указанном диапазоне.
         public void Inverse(int index, int count)
         {
-
         }
 
         public void Shuffle()
         {
-
         }
 
 
         //TO DO: implement overloading
-
-        
 
 
         public static MyList<T> operator +(List<T> lhs, MyList<T> rhs)
@@ -141,7 +152,6 @@ namespace Lab2
 
             if (lhs.Count == rhs.Count)
             {
-                
             }
 
             throw new Exception("arguments has different Count.");
@@ -149,16 +159,20 @@ namespace Lab2
             return result;
         }
 
+
+        //TO DO: поправить после фикса CloneCollection()
         public static MyList<T> operator *(MyList<T> myList, double x)
         {
-            var result = new MyList<T>();
-
-            for (int i = 0; i <= x; i++)
+            int i = 0;
+            var temp = new MyList<T>();
+            var result = temp;
+            while (i <= x)
             {
-                myList.CloneCollection();
+                result.AddRange(0, myList);
+                ++i;
             }
 
-            return myList;
+            return result;
         }
 
         //TO DO: implement Sort

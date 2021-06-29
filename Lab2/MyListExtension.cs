@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 
 namespace Lab2
@@ -10,12 +12,10 @@ namespace Lab2
         {
             foreach (var item in collection)
             {
-                Console.WriteLine(item);
+                Console.Write($"{item} ");
             }
+
+            Console.WriteLine();
         }
-
-
-
-        
     }
 }

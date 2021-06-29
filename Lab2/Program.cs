@@ -14,8 +14,8 @@ namespace Lab2
             doubleFirstList.Add(1.0);
             doubleFirstList.Add(2.0);
             doubleFirstList.Add(3.0);
-            Console.WriteLine($"doubleList cap: {doubleFirstList.Capacity} count: {doubleFirstList.Count}");
-            doubleFirstList.Print();
+            //Console.WriteLine($"doubleList cap: {doubleFirstList.Capacity} count: {doubleFirstList.Count}");
+            //doubleFirstList.Print();
 
             var doubleSecondList = new MyList<double>();
             doubleSecondList.Add(1);
@@ -23,15 +23,16 @@ namespace Lab2
             doubleSecondList.Add(-1);
             doubleSecondList.Add(-2);
             doubleSecondList.Add(-3);
-            Console.WriteLine($"doubleList cap: {doubleSecondList.Capacity} count: {doubleSecondList.Count}");
+            doubleSecondList.Add(0);
+            //Console.WriteLine($"doubleList cap: {doubleSecondList.Capacity} count: {doubleSecondList.Count}");
             doubleSecondList.Print();
 
 
-            var figureList = new MyList<Figure>();
-            figureList.Add(new Circle(1));
-            figureList.Add(new Square(6));
-            figureList.Add(new Rectangle(1,6));
-            figureList.Print();
+            //var figureList = new MyList<Figure>();
+            //figureList.Add(new Circle(1));
+            //figureList.Add(new Square(6));
+            //figureList.Add(new Rectangle(1,6));
+            //figureList.Print();
 
             var list = new List<double>();
             list.Add(-1);
@@ -44,11 +45,24 @@ namespace Lab2
             debugList.Add(1);
             debugList.Add(2);
             debugList.Add(3);
+            debugList.Add(4);
             //debugList.Print();
-            debugList.AddRange(0,debugList);
-            debugList.Print();
+            //debugList.AddRange(0,debugList);
+            //debugList.Print();
 
-            //debugList.CloneCollection().CloneCollection().Print();
+
+
+
+            debugList.CloneCollection().Print();
+            Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
+            debugList.CloneCollection().Print();
+            Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
+            //debugList.CloneCollection().Print();
+            //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
+            //debugList.CloneCollection().Print();
+            //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
+
+
 
 
 
