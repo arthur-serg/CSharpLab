@@ -112,7 +112,7 @@ namespace Lab2
             //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
             Array.Copy(temp, 0, myArray, 0, Count);
             Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
-            //TO DO: где-то здесь херня.
+            
             Array.Copy(temp, 0, myArray, Count, Capacity-Count);
             Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
             

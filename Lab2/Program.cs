@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
+
 namespace Lab2
 {
     internal class Program
@@ -54,6 +55,15 @@ namespace Lab2
 
 
             debugList.CloneCollection().Print();
+
+
+            foreach (var VARIABLE in debugList)
+            {
+                Console.Write(VARIABLE + " ");
+            }
+
+            Console.WriteLine();
+
             Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
             debugList.CloneCollection().Print();
             Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
@@ -62,9 +72,9 @@ namespace Lab2
             //debugList.CloneCollection().Print();
             //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
 
+            
 
-
-
+            debugList.Print();
 
 
         }
