@@ -1,4 +1,10 @@
 ﻿using System;
+<<<<<<< HEAD
+=======
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+>>>>>>> master
 
 namespace Lab2
 {

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
+
 namespace Lab2
 {
     internal class Program
@@ -54,6 +55,7 @@ namespace Lab2
 
 
             debugList.CloneCollection().Print();
+<<<<<<< HEAD
             foreach (var VARIABLE in debugList)
             {
                 Console.Write(VARIABLE+" ");
@@ -61,6 +63,17 @@ namespace Lab2
 
             Console.WriteLine();
             debugList.Print();
+=======
+
+
+            foreach (var VARIABLE in debugList)
+            {
+                Console.Write(VARIABLE + " ");
+            }
+
+            Console.WriteLine();
+
+>>>>>>> master
             Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
             debugList.CloneCollection().Print();
             Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
@@ -69,7 +82,9 @@ namespace Lab2
             //debugList.CloneCollection().Print();
             //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
 
+            
 
+<<<<<<< HEAD
             var multiplyList = new MyList<int>();
             multiplyList.Add(1);
             multiplyList.Add(2);
@@ -81,6 +96,9 @@ namespace Lab2
             //{
             //    Console.WriteLine(VARIABLE);
             //}
+=======
+            debugList.Print();
+>>>>>>> master
 
             multiplyList.Shuffle();
             multiplyList.Print();
