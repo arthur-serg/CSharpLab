@@ -101,25 +101,16 @@ namespace Lab2
         {
             var result = new MyList<T>();
             T[] temp = myArray;
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
             Array.Copy(myArray, 0, temp, 0, Count);
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
             //N.B.: любой сет капасити создает новый myArray с дефолтными значениями.
             //Важно где-то хранить myArray со старым значением капасити до вызова мутатора.
-
-            Capacity += Count-1;
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            Capacity += Count - 1;
             //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
             Array.Copy(temp, 0, myArray, 0, Count);
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
             //TO DO: где-то здесь херня.
-            Array.Copy(temp, 0, myArray, Count, Capacity-Count);
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
-            
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
+            Array.Copy(temp, 0, myArray, Count, Capacity - Count);
             Count += Count;
             result = new MyList<T>(myArray);
-
             return result;
         }
 
@@ -140,6 +131,7 @@ namespace Lab2
 
         public void Shuffle()
         {
+
         }
 
 
@@ -161,18 +153,13 @@ namespace Lab2
 
 
         //TO DO: поправить после фикса CloneCollection()
-        public static MyList<T> operator *(MyList<T> myList, double x)
+        public static MyList<T> operator *(MyList<T> list, int x)
         {
-            int i = 0;
-            var temp = new MyList<T>();
-            var result = temp;
-            while (i <= x)
+            for (int i = 1; i <= x; i++)
             {
-                result.AddRange(0, myList);
-                ++i;
+                list.CloneCollection();
             }
-
-            return result;
+            return list;
         }
 
         //TO DO: implement Sort

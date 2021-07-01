@@ -54,6 +54,13 @@ namespace Lab2
 
 
             debugList.CloneCollection().Print();
+            foreach (var VARIABLE in debugList)
+            {
+                Console.Write(VARIABLE+" ");
+            }
+
+            Console.WriteLine();
+            debugList.Print();
             Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
             debugList.CloneCollection().Print();
             Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
@@ -63,10 +70,20 @@ namespace Lab2
             //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
 
 
+            var multiplyList = new MyList<int>();
+            multiplyList.Add(1);
+            multiplyList.Add(2);
+            multiplyList.Add(3);
 
+            //var res = multiplyList * 2;
 
+            //foreach (var VARIABLE in res)
+            //{
+            //    Console.WriteLine(VARIABLE);
+            //}
 
-
+            multiplyList.Shuffle();
+            multiplyList.Print();
         }
     }
 }
