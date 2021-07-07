@@ -85,6 +85,13 @@ namespace Lab2
         {
             if (collection == this)
             {
+                MyList<T> temp = new MyList<T>(collection.Capacity);
+                foreach(var item in collection)
+                {
+                    temp.Add(item);
+                    Console.WriteLine($"addRange debug: {item}");
+                } 
+                
                 collection.CloneCollection();
             }
         }
