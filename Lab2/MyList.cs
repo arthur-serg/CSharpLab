@@ -107,17 +107,7 @@ namespace Lab2
             Capacity += Count - 1;
             //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
             Array.Copy(temp, 0, myArray, 0, Count);
-<<<<<<< .merge_file_a16268
-            //TO DO: где-то здесь херня.
             Array.Copy(temp, 0, myArray, Count, Capacity - Count);
-=======
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
-            
-            Array.Copy(temp, 0, myArray, Count, Capacity-Count);
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
-            
-            Console.WriteLine($"debug count: {Count} capacity: {Capacity}");
->>>>>>> .merge_file_a17120
             Count += Count;
             result = new MyList<T>(myArray);
             return result;
