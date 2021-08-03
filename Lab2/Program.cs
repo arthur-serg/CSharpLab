@@ -83,6 +83,24 @@ namespace Lab2
             listDeb.Add(1);
             listDeb.Print();
             listDeb.AddRange(0, listDeb);
+            listDeb.Print();
+            listDeb.Add(33);
+            listDeb.Print();
+            listDeb.AddRange(0,listDeb);
+            listDeb.Print();
+
+            var listOne = new MyList<int>();
+            listOne.Add(1);
+            listOne.Add(2);
+            listOne.Add(3);
+            listOne.Add(9);
+
+            var newList = new MyList<int>();
+
+            newList.AddRange(listOne);
+
+            newList.Print();
+
 
 
         }

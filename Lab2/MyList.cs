@@ -85,15 +85,35 @@ namespace Lab2
         {
             if (collection == this)
             {
-                MyList<T> temp = new MyList<T>(collection.Capacity);
-                foreach(var item in collection)
+                T[] temp = collection.ToArray();
+                foreach (var VARIABLE in temp)
                 {
-                    temp.Add(item);
-                    Console.WriteLine($"addRange debug: {item}");
-                } 
-                
-                collection.CloneCollection();
+                    Console.WriteLine($"{VARIABLE}");
+                }
             }
+
+        }
+
+
+
+        public void AddRange(MyList<T> collection)
+        {
+            
+            T[] tempArray = collection.ToArray();
+            
+            
+            Count += Count;
+            Array.Copy(tempArray, myArray, tempArray.Length);
+            Capacity *= InitialCapacity;
+            Array.Copy(tempArray,0,myArray,tempArray.Length,tempArray.Length);
+
+            foreach (var VARIABLE in myArray)
+            {
+                Console.Write($"{VARIABLE} ");
+                collection.Add(VARIABLE);
+            }
+            
+
         }
 
         //public MyList<T> CloneCollection(IEnumerable<T> collection)
@@ -111,7 +131,7 @@ namespace Lab2
             Array.Copy(myArray, 0, temp, 0, Count);
             //N.B.: любой сет капасити создает новый myArray с дефолтными значениями.
             //Важно где-то хранить myArray со старым значением капасити до вызова мутатора.
-            Capacity += Count - 1;
+            Capacity = Count*InitialCapacity;
             //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
             Array.Copy(temp, 0, myArray, 0, Count);
             Array.Copy(temp, 0, myArray, Count, Capacity - Count);
@@ -119,6 +139,10 @@ namespace Lab2
             result = new MyList<T>(myArray);
             return result;
         }
+
+
+
+
 
         //Выполняет поиск элемента, удовлетворяющего условиям указанного предиката, и возвращает первое найденное вхождение в пределах всего списка List<T>.
         public void Find()
@@ -137,7 +161,6 @@ namespace Lab2
 
         public void Shuffle()
         {
-
         }
 
 
@@ -161,10 +184,11 @@ namespace Lab2
         //TO DO: поправить после фикса CloneCollection()
         public static MyList<T> operator *(MyList<T> list, int x)
         {
-            for (int i = 1; i <= x; i++)
+            for (int i = 1; i < x; ++i)
             {
-                list.CloneCollection();
+                list.AddRange(list);
             }
+
             return list;
         }
 
