@@ -91,35 +91,26 @@ namespace Lab2
                     Console.WriteLine($"{VARIABLE}");
                 }
             }
-
         }
 
-
-
-        public void AddRange(MyList<T> collection)
+        private void CheckCapacity(int value)
         {
-            
-            T[] tempArray = collection.ToArray();
-            
-            
-            Count += Count;
-            Array.Copy(tempArray, myArray, tempArray.Length);
-            Capacity *= InitialCapacity;
-            Array.Copy(tempArray,0,myArray,tempArray.Length,tempArray.Length);
-
-            foreach (var VARIABLE in myArray)
+            if (myArray.Length < value)
             {
-                Console.Write($"{VARIABLE} ");
-                collection.Add(VARIABLE);
-            }
-            
+                int capacity = myArray.Length == 0 ? InitialCapacity : myArray.Length * 2;
+                if (capacity < value)
+                {
+                    capacity = value;
+                }
 
+                Capacity = capacity;
+            }
         }
 
-        //public MyList<T> CloneCollection(IEnumerable<T> collection)
-        //{
-
-        //}
+        public void AddRange(IEnumerable<T> collection)
+        {
+            T[] tmpArray = new T[collection.ToArray().Length];
+        }
 
 
         //добавляет к текущей коллекции её же саму. Count увеличивается соответственно с каждым вызовом. Capacity аналогично.
@@ -131,7 +122,7 @@ namespace Lab2
             Array.Copy(myArray, 0, temp, 0, Count);
             //N.B.: любой сет капасити создает новый myArray с дефолтными значениями.
             //Важно где-то хранить myArray со старым значением капасити до вызова мутатора.
-            Capacity = Count*InitialCapacity;
+            Capacity = Count * InitialCapacity;
             //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
             Array.Copy(temp, 0, myArray, 0, Count);
             Array.Copy(temp, 0, myArray, Count, Capacity - Count);
@@ -141,11 +132,8 @@ namespace Lab2
         }
 
 
-
-
-
         //Выполняет поиск элемента, удовлетворяющего условиям указанного предиката, и возвращает первое найденное вхождение в пределах всего списка List<T>.
-        public void Find()
+        public void Find(Predicate<T> match)
         {
         }
 
@@ -161,9 +149,23 @@ namespace Lab2
 
         public void Shuffle()
         {
+            Random seed = new Random();
+            for (int i = Count; i > 0; --i)
+            {
+                int tempIndex = seed.Next(i);
+                Add(this[tempIndex]);
+                RemoveAt(tempIndex);
+            }
         }
 
-
+        public void Shuffle<T>()
+        {
+            Random seed = new Random();
+            var tempArray = new T[Count];
+            Array.Copy(myArray, tempArray, Count);
+            var result = tempArray.OrderBy(item => seed.Next());
+            Array.Copy(result.ToArray(), myArray, Count);
+        }
         //TO DO: implement overloading
 
 
@@ -186,7 +188,6 @@ namespace Lab2
         {
             for (int i = 1; i < x; ++i)
             {
-                list.AddRange(list);
             }
 
             return list;

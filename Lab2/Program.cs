@@ -26,7 +26,7 @@ namespace Lab2
             doubleSecondList.Add(-3);
             doubleSecondList.Add(0);
             //Console.WriteLine($"doubleList cap: {doubleSecondList.Capacity} count: {doubleSecondList.Count}");
-            doubleSecondList.Print();
+            //doubleSecondList.Print();
 
 
             //var figureList = new MyList<Figure>();
@@ -54,53 +54,61 @@ namespace Lab2
 
 
 
-            debugList.CloneCollection().Print();
-            foreach (var VARIABLE in debugList)
-            {
-                Console.Write(VARIABLE + " ");
-            }
+            //debugList.CloneCollection().Print();
+            //foreach (var VARIABLE in debugList)
+            //{
+            //    Console.Write(VARIABLE + " ");
+            //}
 
-            Console.WriteLine();
-            debugList.Print();
+            //Console.WriteLine();
+            //debugList.Print();
 
 
-            foreach (var VARIABLE in debugList)
-            {
-                Console.Write(VARIABLE + " ");
-            }
+            //foreach (var VARIABLE in debugList)
+            //{
+            //    Console.Write(VARIABLE + " ");
+            //}
 
-            Console.WriteLine();
-            Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
-            debugList.CloneCollection().Print();
-            Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
+            //Console.WriteLine();
+            //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
+            //debugList.CloneCollection().Print();
+            //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
             //debugList.CloneCollection().Print();
             //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
             //debugList.CloneCollection().Print();
             //Console.WriteLine($"count: {debugList.Count} cap: {debugList.Capacity}");
 
-            var listDeb = new MyList<int>();
-            listDeb.Add(0);
-            listDeb.Add(1);
-            listDeb.Print();
-            listDeb.AddRange(0, listDeb);
-            listDeb.Print();
-            listDeb.Add(33);
-            listDeb.Print();
-            listDeb.AddRange(0,listDeb);
-            listDeb.Print();
+            //var listDeb = new MyList<int>();
+            //listDeb.Add(0);
+            //listDeb.Add(1);
+            //listDeb.Print();
+            //listDeb.AddRange(0, listDeb);
+            //listDeb.Print();
+            //listDeb.Add(33);
+            //listDeb.Print();
+            //listDeb.AddRange(0,listDeb);
+            //listDeb.Print();
 
             var listOne = new MyList<int>();
             listOne.Add(1);
             listOne.Add(2);
-            listOne.Add(3);
-            listOne.Add(9);
+            listOne.Add(-3);
+            listOne.Add(6);
+            listOne.Add(7);
+            listOne.Add(25);
 
             var newList = new MyList<int>();
 
-            newList.AddRange(listOne);
+            //listOne.Shuffle();
 
-            newList.Print();
+            listOne.Shuffle<int>();
 
+            foreach (var VARIABLE in listOne)
+            {
+                Console.Write(VARIABLE + " ");
+            }
+
+            Console.WriteLine();
 
 
         }
