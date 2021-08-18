@@ -10,6 +10,7 @@ namespace Lab2
     internal class MyList<T> : IComparer<T>
     {
         private const int InitialCapacity = 2;
+        private Random seed = new Random();
         private T[] myArray;
 
         public MyList(int capacity = InitialCapacity)
@@ -138,8 +139,23 @@ namespace Lab2
         }
 
         //Изменяет порядок элементов во всем списке List<T> на обратный.
-        public void Inverse()
+        public MyList<T> Inverse()
         {
+            var result = new MyList<T>();
+            for (int i = Count-1; i >= 0; --i)
+            {
+                result.Add(this[i]);
+            }
+
+            return result;
+        }
+
+        public void Inverse<T>()
+        {
+            for (int i = Count-1; i >=0; --i)
+            {
+                Add(this[i]);
+            }
         }
 
         //Изменяет порядок элементов в указанном диапазоне.
@@ -149,7 +165,6 @@ namespace Lab2
 
         public void Shuffle()
         {
-            Random seed = new Random();
             for (int i = Count; i > 0; --i)
             {
                 int tempIndex = seed.Next(i);
@@ -160,7 +175,6 @@ namespace Lab2
 
         public void Shuffle<T>()
         {
-            Random seed = new Random();
             var tempArray = new T[Count];
             Array.Copy(myArray, tempArray, Count);
             var result = tempArray.OrderBy(item => seed.Next());

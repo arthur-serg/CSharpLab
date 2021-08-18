@@ -103,14 +103,11 @@ namespace Lab2
 
             listOne.Shuffle<int>();
 
-            foreach (var VARIABLE in listOne)
-            {
-                Console.Write(VARIABLE + " ");
-            }
+            listOne.Print();
 
-            Console.WriteLine();
+            listOne.Inverse().Print();
 
-
+            
         }
     }
 }
