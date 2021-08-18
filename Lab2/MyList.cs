@@ -134,15 +134,24 @@ namespace Lab2
 
 
         //Выполняет поиск элемента, удовлетворяющего условиям указанного предиката, и возвращает первое найденное вхождение в пределах всего списка List<T>.
-        public void Find(Predicate<T> match)
+        public T Find(Func<T, bool> match)
         {
+            for (int i = 0; i < Count; ++i)
+            {
+                if (match(myArray[i]))
+                {
+                    return myArray[i];
+                }
+            }
+
+            return default;
         }
 
         //Изменяет порядок элементов во всем списке List<T> на обратный.
         public MyList<T> Inverse()
         {
             var result = new MyList<T>();
-            for (int i = Count-1; i >= 0; --i)
+            for (int i = Count - 1; i >= 0; --i)
             {
                 result.Add(this[i]);
             }
@@ -152,7 +161,7 @@ namespace Lab2
 
         public void Inverse<T>()
         {
-            for (int i = Count-1; i >=0; --i)
+            for (int i = Count - 1; i >= 0; --i)
             {
                 Add(this[i]);
             }

@@ -52,8 +52,6 @@ namespace Lab2
             //debugList.Print();
 
 
-
-
             //debugList.CloneCollection().Print();
             //foreach (var VARIABLE in debugList)
             //{
@@ -107,7 +105,8 @@ namespace Lab2
 
             listOne.Inverse().Print();
 
-            
+
+            Console.WriteLine(listOne.Find(x => x > 5));
         }
     }
 }
