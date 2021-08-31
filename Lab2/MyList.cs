@@ -159,54 +159,19 @@ namespace Lab2
             return result;
         }
 
-        public void Inverse<T>()
-        {
-            for (int i = Count - 1; i >= 0; --i)
-            {
-                Add(this[i]);
-            }
-        }
+        public void Inverse<T>() => Inverse<T>(0, Count);
 
         //Изменяет порядок элементов в указанном диапазоне.
         public IEnumerable<T> Inverse<T>(int startIndex, int stopIndex)
         {
             IEnumerable<T> ie = new T[Count];
             T[] tempArray = new T[Count];
-            //Array.Copy(myArray, tempArray, Count); //здесь ок, само собой
-
-            foreach (var item in tempArray)
-            {
-                Debug.WriteLine(item);
-            }
-            Debug.WriteLine("_____");
             Array.Copy(myArray, 0, tempArray, startIndex - 2, startIndex);
+            Array.Reverse(myArray, startIndex, stopIndex-1);
+            Array.Copy(myArray, startIndex, tempArray, stopIndex, stopIndex-startIndex);
+            Array.Copy(myArray,tempArray,Count);
 
-            for (int i = stopIndex; i >= startIndex; --i)
-            {
-                
-            }
-
-            Array.Copy(myArray, stopIndex + 1, tempArray, stopIndex + 1, Count - 1 - stopIndex);
-
-            foreach (var item in tempArray)
-            {
-                Debug.WriteLine(item);
-            }
-
-            //поделить коллекцию на 3 части
-            //    0      1          |       2    3               | 4                 5         |
-
-            //    1      2          |      -3    6               | 7                25         |
-
-            //  a_0......a_(start-1)| start ......          stop | a_(stop+1).......a_(Count-1)|
-
-            // copy to temp array   |       Reverse   then copy  |          copy tail          |
-
-
-            //    1      2          |       6    -3              | 7                25         |
-
-
-
+            ie = tempArray;
             return ie;
         }
 

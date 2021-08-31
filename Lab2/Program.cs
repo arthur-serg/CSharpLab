@@ -92,6 +92,8 @@ namespace Lab2
             listOne.Add(2);
             listOne.Add(-3);
             listOne.Add(100);
+            listOne.Add(5000);
+            listOne.Add(-74445);
             listOne.Add(6);
             listOne.Add(7);
             listOne.Add(25);
