@@ -99,7 +99,7 @@ namespace Lab2
 
             //listOne.Shuffle();
 
-            listOne.Shuffle<int>();
+            //listOne.Shuffle<int>();
 
             listOne.Print();
 
@@ -107,6 +107,8 @@ namespace Lab2
 
 
             Console.WriteLine(listOne.Find(x => x > 5));
+
+            listOne.Inverse(2, 3);
         }
     }
 }

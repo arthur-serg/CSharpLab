@@ -12,7 +12,7 @@ namespace Lab2
         private const int InitialCapacity = 2;
         private Random seed = new Random();
         private T[] myArray;
-
+        
         public MyList(int capacity = InitialCapacity)
         {
             Capacity = capacity;
@@ -168,8 +168,33 @@ namespace Lab2
         }
 
         //Изменяет порядок элементов в указанном диапазоне.
-        public void Inverse(int index, int count)
+        public IEnumerable<T> Inverse(int startIndex, int stopIndex)
         {
+            IEnumerable<T> ie = new T[Count];
+            T[] tempArray = new T[Count];
+            Array.Copy(myArray, tempArray, Count); //здесь ок, само собой
+
+            
+
+            for (int i = 0; i < Count; ++i)
+            {
+                ie.Append(tempArray[i]);
+            }
+            
+            
+            foreach(var item in ie)
+            {
+                Debug.WriteLine(item); //нули стабильно. не могу понять почему не копирует туда
+            }
+
+
+            //поделить коллекцию на 3 части
+            //    1      2          |      -3    6               | 7                25         |
+            //    1      2          |       6    -3              | 7                25         |
+            //  a_0......a_(start-1)| start ......          stop | a_(stop+1).......a_(Count-1)|
+            // copy to temp array   |       Reverse   then copy  |          copy tail          |
+
+            return ie;
         }
 
         public void Shuffle()
