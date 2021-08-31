@@ -111,6 +111,14 @@ namespace Lab2
             listOne.Inverse<int>(4, 7);
             listOne.Print();
 
+            var listTwo = new MyList<int>();
+            listTwo.Add(666);
+            listTwo.Add(667);
+            listTwo.Add(444);
+
+
+            listOne.AddRange(1, listTwo);
+            listOne.Print();
         }
     }
 }

@@ -80,19 +80,34 @@ namespace Lab2
           а существующие элементы копируются в новый массив перед добавлением новых элементов.
          */
 
-        //TO DO: check Array borders. 
-        // maybe AddRange(int index, IEnumerable<T> collection) ????
+
         public void AddRange(int index, MyList<T> collection)
         {
-            if (collection == this)
+            if (IsInRange(index))
             {
-                T[] temp = collection.ToArray();
-                foreach (var VARIABLE in temp)
+                CheckCapacity(Count+collection.Count);
+                T[] tempArray = new T[Count+collection.Count];
+                Array.Copy(myArray, 0, tempArray, 0, index);
+                Array.Copy(collection.myArray, 0, tempArray , collection.Count , collection.Count);
+                Array.Copy(myArray, index + 1, tempArray , collection.Count + index, Count - collection.Count);
+
+                foreach (var VARIABLE in tempArray)
                 {
-                    Console.WriteLine($"{VARIABLE}");
+                    Debug.WriteLine(VARIABLE);
                 }
             }
         }
+
+
+
+        //                  |
+        //      0           1           2           3           4           5           6
+        
+        //      -1          1           7           5           8           7           10
+
+        //      666         667
+
+        //      -1           666         667        -1          1           7           5           8           7           10
 
         private void CheckCapacity(int value)
         {
@@ -111,6 +126,7 @@ namespace Lab2
         public void AddRange(IEnumerable<T> collection)
         {
             T[] tmpArray = new T[collection.ToArray().Length];
+            
         }
 
 
@@ -160,7 +176,7 @@ namespace Lab2
         }
 
         public void Inverse<T>() => Inverse<T>(0, Count);
-
+            
         //Изменяет порядок элементов в указанном диапазоне.
         public void Inverse<T>(int startIndex, int stopIndex)
         {
@@ -232,5 +248,7 @@ namespace Lab2
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }
