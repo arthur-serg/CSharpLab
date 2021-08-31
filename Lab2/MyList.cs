@@ -168,31 +168,44 @@ namespace Lab2
         }
 
         //Изменяет порядок элементов в указанном диапазоне.
-        public IEnumerable<T> Inverse(int startIndex, int stopIndex)
+        public IEnumerable<T> Inverse<T>(int startIndex, int stopIndex)
         {
             IEnumerable<T> ie = new T[Count];
             T[] tempArray = new T[Count];
-            Array.Copy(myArray, tempArray, Count); //здесь ок, само собой
+            //Array.Copy(myArray, tempArray, Count); //здесь ок, само собой
 
-            
-
-            for (int i = 0; i < Count; ++i)
+            foreach (var item in tempArray)
             {
-                ie.Append(tempArray[i]);
+                Debug.WriteLine(item);
             }
-            
-            
-            foreach(var item in ie)
+            Debug.WriteLine("_____");
+            Array.Copy(myArray, 0, tempArray, startIndex - 2, startIndex);
+
+            for (int i = stopIndex; i >= startIndex; --i)
             {
-                Debug.WriteLine(item); //нули стабильно. не могу понять почему не копирует туда
+                
             }
 
+            Array.Copy(myArray, stopIndex + 1, tempArray, stopIndex + 1, Count - 1 - stopIndex);
+
+            foreach (var item in tempArray)
+            {
+                Debug.WriteLine(item);
+            }
 
             //поделить коллекцию на 3 части
+            //    0      1          |       2    3               | 4                 5         |
+
             //    1      2          |      -3    6               | 7                25         |
-            //    1      2          |       6    -3              | 7                25         |
+
             //  a_0......a_(start-1)| start ......          stop | a_(stop+1).......a_(Count-1)|
+
             // copy to temp array   |       Reverse   then copy  |          copy tail          |
+
+
+            //    1      2          |       6    -3              | 7                25         |
+
+
 
             return ie;
         }

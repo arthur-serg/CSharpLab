@@ -91,6 +91,7 @@ namespace Lab2
             listOne.Add(1);
             listOne.Add(2);
             listOne.Add(-3);
+            listOne.Add(100);
             listOne.Add(6);
             listOne.Add(7);
             listOne.Add(25);
@@ -106,9 +107,9 @@ namespace Lab2
             listOne.Inverse().Print();
 
 
-            Console.WriteLine(listOne.Find(x => x > 5));
+            Console.WriteLine(listOne.Find(x => x > 0));
 
-            listOne.Inverse(2, 3);
+            listOne.Inverse<int>(2, 4);
         }
     }
 }
