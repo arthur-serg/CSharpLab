@@ -12,7 +12,7 @@ namespace Lab2
         private const int InitialCapacity = 2;
         private Random seed = new Random();
         private T[] myArray;
-        
+
         public MyList(int capacity = InitialCapacity)
         {
             Capacity = capacity;
@@ -162,17 +162,13 @@ namespace Lab2
         public void Inverse<T>() => Inverse<T>(0, Count);
 
         //Изменяет порядок элементов в указанном диапазоне.
-        public IEnumerable<T> Inverse<T>(int startIndex, int stopIndex)
+        public void Inverse<T>(int startIndex, int stopIndex)
         {
-            IEnumerable<T> ie = new T[Count];
             T[] tempArray = new T[Count];
-            Array.Copy(myArray, 0, tempArray, startIndex - 2, startIndex);
-            Array.Reverse(myArray, startIndex, stopIndex-1);
-            Array.Copy(myArray, startIndex, tempArray, stopIndex, stopIndex-startIndex);
-            Array.Copy(myArray,tempArray,Count);
-
-            ie = tempArray;
-            return ie;
+            Array.Copy(myArray, 0, tempArray, Count - stopIndex-startIndex, startIndex);
+            Array.Reverse(myArray, startIndex, stopIndex - 1);
+            Array.Copy(myArray, startIndex, tempArray, stopIndex, Count - stopIndex - startIndex);
+            Array.Copy(myArray, tempArray, Count);
         }
 
         public void Shuffle()

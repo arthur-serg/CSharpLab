@@ -106,12 +106,14 @@ namespace Lab2
 
             listOne.Print();
 
-            listOne.Inverse().Print();
+            //listOne.Inverse().Print();
 
 
             Console.WriteLine(listOne.Find(x => x > 0));
 
-            listOne.Inverse<int>(2, 4);
+            listOne.Inverse<int>(1, listOne.Count-1);
+
+
         }
     }
 }
