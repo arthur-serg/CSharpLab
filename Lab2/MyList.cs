@@ -165,9 +165,11 @@ namespace Lab2
         public void Inverse<T>(int startIndex, int stopIndex)
         {
             T[] tempArray = new T[Count];
-            Array.Copy(myArray, 0, tempArray, Count - stopIndex-startIndex, startIndex);
-            Array.Reverse(myArray, startIndex, stopIndex - 1);
-            Array.Copy(myArray, startIndex, tempArray, stopIndex, Count - stopIndex - startIndex);
+            //Array.Copy(myArray, 0, tempArray, Count - (stopIndex-startIndex), startIndex);
+            Array.Copy(myArray, tempArray, startIndex);
+            Array.Reverse(myArray, startIndex, stopIndex - startIndex + 1);
+            Array.Copy(myArray, stopIndex+1, tempArray, Count - stopIndex +1 , Count - stopIndex);
+            //Array.Copy(myArray, startIndex, tempArray, stopIndex, Count - (stopIndex - startIndex));
             Array.Copy(myArray, tempArray, Count);
         }
 
