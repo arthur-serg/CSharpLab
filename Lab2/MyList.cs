@@ -83,26 +83,19 @@ namespace Lab2
 
         public void AddRange(int index, MyList<T> collection)
         {
-            if (IsInRange(index))
-            {
-                CheckCapacity(Count+collection.Count);
-                T[] tempArray = new T[Count+collection.Count];
-                Array.Copy(myArray, 0, tempArray, 0, index);
-                Array.Copy(collection.myArray, 0, tempArray , collection.Count , collection.Count);
-                Array.Copy(myArray, index + 1, tempArray , collection.Count + index, Count - collection.Count);
-
-                foreach (var VARIABLE in tempArray)
-                {
-                    Debug.WriteLine(VARIABLE);
-                }
-            }
+            T[] tempArray = new T[Count > collection.Count ? (collection.Count + Count) : Count * InitialCapacity];
+            Array.Copy(myArray, 0, tempArray, 0, index);
+            Array.Copy(collection.myArray, 0, tempArray, index, collection.Count);
+            Array.Copy(myArray, index, tempArray, collection.Count + index, Count - index);
+            Capacity = Count + collection.Count;
+            Array.Copy(tempArray, 0, myArray, 0, Count + collection.Count);
+            Count += collection.Count;
         }
-
 
 
         //                  |
         //      0           1           2           3           4           5           6
-        
+
         //      -1          1           7           5           8           7           10
 
         //      666         667
@@ -126,7 +119,6 @@ namespace Lab2
         public void AddRange(IEnumerable<T> collection)
         {
             T[] tmpArray = new T[collection.ToArray().Length];
-            
         }
 
 
@@ -176,14 +168,14 @@ namespace Lab2
         }
 
         public void Inverse<T>() => Inverse<T>(0, Count);
-            
+
         //Изменяет порядок элементов в указанном диапазоне.
         public void Inverse<T>(int startIndex, int stopIndex)
         {
             T[] tempArray = new T[Count];
             Array.Copy(myArray, tempArray, startIndex);
             Array.Reverse(myArray, startIndex, stopIndex - startIndex + 1);
-            Array.Copy(myArray, stopIndex+1, tempArray, Count - stopIndex +1 , Count - stopIndex);
+            Array.Copy(myArray, stopIndex + 1, tempArray, Count - stopIndex + 1, Count - stopIndex);
         }
 
         public void Shuffle()
@@ -248,7 +240,5 @@ namespace Lab2
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }

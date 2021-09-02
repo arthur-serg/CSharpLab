@@ -106,19 +106,22 @@ namespace Lab2
 
             listOne.Print();
 
-            Console.WriteLine(listOne.Find(x => x > 0));
+            //Console.WriteLine(listOne.Find(x => x > 0));
 
-            listOne.Inverse<int>(4, 7);
-            listOne.Print();
+            //listOne.Inverse<int>(4, 7);
+            //listOne.Print();
 
             var listTwo = new MyList<int>();
             listTwo.Add(666);
             listTwo.Add(667);
-            listTwo.Add(444);
+            listTwo.Add(668);
+            listTwo.Add(669);
 
-
-            listOne.AddRange(1, listTwo);
+            
+            listOne.AddRange(listOne.Count, listTwo);
+            Console.WriteLine("after addrange:");
             listOne.Print();
+            
         }
     }
 }
