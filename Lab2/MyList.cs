@@ -29,7 +29,6 @@ namespace Lab2
             }
         }
 
-
         private bool IsInRange(int index) => index >= 0 && index <= Count;
 
         public T this[int index]
@@ -67,20 +66,6 @@ namespace Lab2
         }
 
 
-        /*
-           // Adds the elements of the given collection to the end of this list. If
-           // required, the capacity of the list is increased to twice the previous
-           // capacity or the new size, whichever is larger.
-           //
-           //AddRange will be useful for overloading of * operator.
-         
-          Порядок элементов в коллекции сохраняется в List<T> .
-          Если новый Count (текущий Count плюс размер коллекции) будет больше Capacity ,
-          емкость List<T> увеличивается путем автоматического повторного выделения внутреннего массива для размещения новых элементов, 
-          а существующие элементы копируются в новый массив перед добавлением новых элементов.
-         */
-
-
         public void AddRange(int index, MyList<T> collection)
         {
             T[] tempArray = new T[Count > collection.Count ? (collection.Count + Count) : Count * InitialCapacity];
@@ -89,18 +74,9 @@ namespace Lab2
             Array.Copy(myArray, index, tempArray, collection.Count + index, Count - index);
             Capacity = Count + collection.Count;
             Array.Copy(tempArray, 0, myArray, 0, Count + collection.Count);
-            Count += collection.Count;
+            Count = Capacity;
         }
 
-
-        //                  |
-        //      0           1           2           3           4           5           6
-
-        //      -1          1           7           5           8           7           10
-
-        //      666         667
-
-        //      -1           666         667        -1          1           7           5           8           7           10
 
         private void CheckCapacity(int value)
         {
@@ -114,30 +90,6 @@ namespace Lab2
 
                 Capacity = capacity;
             }
-        }
-
-        public void AddRange(IEnumerable<T> collection)
-        {
-            T[] tmpArray = new T[collection.ToArray().Length];
-        }
-
-
-        //добавляет к текущей коллекции её же саму. Count увеличивается соответственно с каждым вызовом. Capacity аналогично.
-        //TO DO: фикс лишних нулей в конце списка.
-        public MyList<T> CloneCollection()
-        {
-            var result = new MyList<T>();
-            T[] temp = myArray;
-            Array.Copy(myArray, 0, temp, 0, Count);
-            //N.B.: любой сет капасити создает новый myArray с дефолтными значениями.
-            //Важно где-то хранить myArray со старым значением капасити до вызова мутатора.
-            Capacity = Count * InitialCapacity;
-            //копируем в myArray с увеличенным капасити. сначала в первую половину, потом во вторую.
-            Array.Copy(temp, 0, myArray, 0, Count);
-            Array.Copy(temp, 0, myArray, Count, Capacity - Count);
-            Count += Count;
-            result = new MyList<T>(myArray);
-            return result;
         }
 
 
@@ -211,12 +163,12 @@ namespace Lab2
             return result;
         }
 
-
-        //TO DO: поправить после фикса CloneCollection()
         public static MyList<T> operator *(MyList<T> list, int x)
         {
-            for (int i = 1; i < x; ++i)
+            
+            for (int i = 1; i < x ; i++)
             {
+                list.AddRange(list.Count,list);
             }
 
             return list;

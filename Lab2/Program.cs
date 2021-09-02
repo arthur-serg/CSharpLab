@@ -121,7 +121,11 @@ namespace Lab2
             listOne.AddRange(listOne.Count, listTwo);
             Console.WriteLine("after addrange:");
             listOne.Print();
-            
+
+            var multiplier = 3;
+            Console.WriteLine($"overload multiplying by {multiplier}");
+            listTwo *= multiplier;
+            listTwo.Print();
         }
     }
 }
