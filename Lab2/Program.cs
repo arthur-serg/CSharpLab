@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 
-
 namespace Lab2
 {
     internal class Program
@@ -69,6 +68,7 @@ namespace Lab2
             (listOne+listTwo).Print();
 
             listTwo.Print();
+
         }
     }
 }

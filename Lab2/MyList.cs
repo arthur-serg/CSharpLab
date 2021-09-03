@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 
-
 namespace Lab2
 {
     internal class MyList<T> : IComparer<T>
@@ -147,10 +146,10 @@ namespace Lab2
             var result = tempArray.OrderBy(item => seed.Next());
             Array.Copy(result.ToArray(), myArray, Count);
         }
-        
+
 
         //TO DO: перегрузка для листов разного размера (???) дополнить дефолтными значениями меньший по размеру лист.
-        public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs) 
+        public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs)
         {
             var result = new MyList<T>(lhs.Count >= rhs.Count ? lhs.Count : rhs.Count);
             if (lhs.Count == rhs.Count)
@@ -159,7 +158,6 @@ namespace Lab2
                 {
                     result.Add((dynamic) lhs[i] + (dynamic) rhs[i]);
                 }
-
             }
 
             return result;
@@ -167,7 +165,6 @@ namespace Lab2
 
         public static MyList<T> operator *(MyList<T> list, int x)
         {
-            
             return list;
         }
 
@@ -189,7 +186,5 @@ namespace Lab2
         {
             throw new NotImplementedException();
         }
-
-        
     }
 }
