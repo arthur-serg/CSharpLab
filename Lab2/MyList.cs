@@ -147,18 +147,20 @@ namespace Lab2
             var result = tempArray.OrderBy(item => seed.Next());
             Array.Copy(result.ToArray(), myArray, Count);
         }
-        //TO DO: implement overloading
+        
 
-
-        public static MyList<T> operator +(List<T> lhs, MyList<T> rhs)
+        //TO DO: перегрузка для листов разного размера (???) дополнить дефолтными значениями меньший по размеру лист.
+        public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs) 
         {
-            var result = new MyList<T>((lhs));
-
+            var result = new MyList<T>(lhs.Count >= rhs.Count ? lhs.Count : rhs.Count);
             if (lhs.Count == rhs.Count)
             {
-            }
+                for (int i = 0; i < lhs.Count; ++i)
+                {
+                    result.Add((dynamic) lhs[i] + (dynamic) rhs[i]);
+                }
 
-            throw new Exception("arguments has different Count.");
+            }
 
             return result;
         }
@@ -166,11 +168,6 @@ namespace Lab2
         public static MyList<T> operator *(MyList<T> list, int x)
         {
             
-            for (int i = 1; i < x ; i++)
-            {
-                list.AddRange(list.Count,list);
-            }
-
             return list;
         }
 
@@ -192,5 +189,7 @@ namespace Lab2
         {
             throw new NotImplementedException();
         }
+
+        
     }
 }
