@@ -190,6 +190,23 @@ namespace Lab2
             }
         }
 
+        public void Clear() => Count = 0;
+
+        public void RemoveRange(int startIndex, int stopIndex)
+        {
+            if (startIndex == 0 && stopIndex == Count)
+            {
+                Clear();
+            }
+
+            else if (IsInRange(stopIndex - startIndex))
+            {
+                Count = stopIndex - startIndex;
+                Array.Copy(myArray, startIndex, myArray, stopIndex-Count, Count - startIndex);
+            }
+
+        }
+
         public IEnumerator<T> GetEnumerator() => new MyEnumerator<T>(this);
 
 
