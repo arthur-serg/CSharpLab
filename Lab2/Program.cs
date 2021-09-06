@@ -21,47 +21,43 @@ namespace Lab2
 
             var newList = new MyList<int>();
 
-            //listOne.Shuffle();
-
-            //listOne.Shuffle<int>();
-
-            listOne.Print();
-
-            //Console.WriteLine(listOne.Find(x => x > 0));
-
-            //listOne.Inverse<int>(4, 7);
-            //listOne.Print();
 
             var listTwo = new MyList<int>();
-            listTwo.Add(666);
-            listTwo.Add(667);
-            listTwo.Add(668);
-            listTwo.Add(669);
+            listTwo.Add(1);
+            listTwo.Add(7);
+            listTwo.Add(8);
+            //listOne.AddRange(listOne.Count, listTwo);
+            //Console.WriteLine("after addrange:");
+            //listOne.Print();
 
             
-            listOne.AddRange(listOne.Count, listTwo);
-            Console.WriteLine("after addrange:");
-            listOne.Print();
-
-            var multiplier = 2;
-            Console.WriteLine($"overload multiplying by {multiplier}");
-            listTwo *= multiplier;
-            listTwo.Print();
-            int counter = 0;
-            foreach (var item in listTwo)
-            {
-                if (item == 666)
-                {
-                    ++counter;
-                }
-            }
-            Console.WriteLine($"{counter}");
 
             listOne.Print();
             (listOne + new List<int> {1, 2, 3, 4}).Print();
             listOne.Print();
 
 
+
+            var multiplier = 2;
+            listTwo.Print();
+            Console.WriteLine($"overload multiplying by {multiplier}");
+
+
+            //listTwo.RemoveRange(1, listTwo.Count / 2);
+            
+            //listTwo.Print();
+            Console.WriteLine($"Count before : {listTwo.Count}");
+            (listTwo * multiplier).Print();
+            int counter = 0;
+            foreach (var item in listTwo)
+            {
+                if (item == 7)
+                {
+                    ++counter;
+                }
+            }
+            Console.WriteLine($"{counter}");
+            Console.WriteLine($"Count after : {listTwo.Count}");
         }
     }
 }

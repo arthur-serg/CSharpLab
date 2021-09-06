@@ -176,6 +176,21 @@ namespace Lab2
 
         public static MyList<T> operator *(MyList<T> list, int x)
         {
+            if (x <= 1)
+                return list;
+            
+            else
+            {
+                //AddRange меняет сам объект  (????)
+
+                for (int i = 0; i < x; ++i)
+                { 
+                    list.AddRange(list);
+                }
+            }
+
+            //list.RemoveRange(list.Count - (int)Math.Log(list.Count / x,x),list.Count);
+
             return list;
         }
 
