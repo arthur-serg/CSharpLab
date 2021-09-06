@@ -56,18 +56,11 @@ namespace Lab2
                 }
             }
             Console.WriteLine($"{counter}");
-            var doubleList = new MyList<double>();
-            doubleList.Add(5.4);
-            doubleList.Add(-4.1);
-            doubleList.Add(6.9);
-            doubleList.Add(7.4);
 
-            listTwo.Print();
-            (listTwo+listTwo).Print();
-            (doubleList + doubleList).Print();
-            (listOne+listTwo).Print();
+            listOne.Print();
+            (listOne + new List<int> {1, 2, 3, 4}).Print();
+            listOne.Print();
 
-            listTwo.Print();
 
         }
     }

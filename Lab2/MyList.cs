@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Runtime;
 
 namespace Lab2
 {
@@ -63,6 +64,8 @@ namespace Lab2
 
             Count++;
         }
+
+        public void AddRange(MyList<T> collection) => AddRange(Count, collection);
 
 
         public void AddRange(int index, MyList<T> collection)
@@ -147,17 +150,25 @@ namespace Lab2
             Array.Copy(result.ToArray(), myArray, Count);
         }
 
-
-        //TO DO: перегрузка для листов разного размера (???) дополнить дефолтными значениями меньший по размеру лист.
-        public static MyList<T> operator +(MyList<T> lhs, MyList<T> rhs)
+        public void CopyTo(T[] destinationArray, int index)
         {
-            var result = new MyList<T>(lhs.Count >= rhs.Count ? lhs.Count : rhs.Count);
-            if (lhs.Count == rhs.Count)
+            Array.Copy(myArray, 0, destinationArray, index, Count);
+        }
+
+        public void CopyTo(MyList<T> destinationList)
+        {
+            Array.Copy(myArray, destinationList.myArray, Count);
+        }
+
+
+        public static MyList<T> operator +(MyList<T> lhs, IEnumerable<T> ie)
+        {
+            var result = new MyList<T>();
+            var rhs = new MyList<T>(ie);
+            lhs.AddRange(lhs.Count, rhs);
+            foreach (var item in lhs)
             {
-                for (int i = 0; i < lhs.Count; ++i)
-                {
-                    result.Add((dynamic) lhs[i] + (dynamic) rhs[i]);
-                }
+                result.Add(item);
             }
 
             return result;
