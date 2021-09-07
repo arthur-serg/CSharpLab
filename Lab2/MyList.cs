@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime;
+
 
 namespace Lab2
 {
@@ -12,6 +12,7 @@ namespace Lab2
         private const int InitialCapacity = 2;
         private Random seed = new Random();
         private T[] myArray;
+        private IEnumerable<T> ie;
 
         public MyList(int capacity = InitialCapacity)
         {
@@ -176,22 +177,22 @@ namespace Lab2
 
         public static MyList<T> operator *(MyList<T> list, int x)
         {
-            if (x <= 1)
-                return list;
-            
-            else
-            {
-                //AddRange меняет сам объект  (????)
+            var result = new MyList<T>();
 
-                for (int i = 0; i < x; ++i)
-                { 
-                    list.AddRange(list);
+            if (x <= 1)
+            {
+                return list;
+            }
+
+            for (int i = 0; i < x; ++i)
+            {
+                foreach (var item in list)
+                {
+                    result.Add(item);
                 }
             }
 
-            //list.RemoveRange(list.Count - (int)Math.Log(list.Count / x,x),list.Count);
-
-            return list;
+            return result;
         }
 
         //TO DO: implement Sort
@@ -205,21 +206,20 @@ namespace Lab2
             }
         }
 
-        public void Clear() => Count = 0;
+        public void RemoveAll() => Count = 0;
 
         public void RemoveRange(int startIndex, int stopIndex)
         {
             if (startIndex == 0 && stopIndex == Count)
             {
-                Clear();
+                RemoveAll();
             }
 
             else if (IsInRange(stopIndex - startIndex))
             {
                 Count = stopIndex - startIndex;
-                Array.Copy(myArray, startIndex, myArray, stopIndex-Count, Count - startIndex);
+                Array.Copy(myArray, startIndex, myArray, stopIndex - Count, Count - startIndex);
             }
-
         }
 
         public IEnumerator<T> GetEnumerator() => new MyEnumerator<T>(this);

@@ -25,7 +25,7 @@ namespace Lab2
             var listTwo = new MyList<int>();
             listTwo.Add(1);
             listTwo.Add(7);
-            listTwo.Add(8);
+            
             //listOne.AddRange(listOne.Count, listTwo);
             //Console.WriteLine("after addrange:");
             //listOne.Print();
@@ -38,7 +38,7 @@ namespace Lab2
 
 
 
-            var multiplier = 2;
+            var multiplier = 5;
             listTwo.Print();
             Console.WriteLine($"overload multiplying by {multiplier}");
 
