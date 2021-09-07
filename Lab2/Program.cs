@@ -25,39 +25,22 @@ namespace Lab2
             var listTwo = new MyList<int>();
             listTwo.Add(1);
             listTwo.Add(7);
-            
+
             //listOne.AddRange(listOne.Count, listTwo);
             //Console.WriteLine("after addrange:");
             //listOne.Print();
-
-            
 
             listOne.Print();
             (listOne + new List<int> {1, 2, 3, 4}).Print();
             listOne.Print();
 
-
-
             var multiplier = 5;
             listTwo.Print();
             Console.WriteLine($"overload multiplying by {multiplier}");
-
-
             //listTwo.RemoveRange(1, listTwo.Count / 2);
-            
+
             //listTwo.Print();
-            Console.WriteLine($"Count before : {listTwo.Count}");
             (listTwo * multiplier).Print();
-            int counter = 0;
-            foreach (var item in listTwo)
-            {
-                if (item == 7)
-                {
-                    ++counter;
-                }
-            }
-            Console.WriteLine($"{counter}");
-            Console.WriteLine($"Count after : {listTwo.Count}");
         }
     }
 }
